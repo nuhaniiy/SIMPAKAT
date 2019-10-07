@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SIMPAKAT</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Work Programs</string>
+    <string name="title_dashboard">Submissions</string>
+    <string name="title_notifications">Settings</string>
+
+    <!-- Login -->
+    <string name="email_address_required">Email address required</string>
+    <string name="password_required">Password required</string>
+    <string name="info">Info</string>
+    <string name="incorrect_email_address">Incorrect email address</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SIMPAKAT</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Program Kerja</string>
+    <string name="title_dashboard">Pengajuan</string>
+    <string name="title_notifications">Pengaturan</string>
+
+    <!-- Login -->
+    <string name="email_address_required">Alamat email dibutuhkan</string>
+    <string name="password_required">Kata sandi dibutuhkan</string>
+    <string name="info">Info</string>
+    <string name="incorrect_email_address">Email tidak benar</string>
+</resources>
