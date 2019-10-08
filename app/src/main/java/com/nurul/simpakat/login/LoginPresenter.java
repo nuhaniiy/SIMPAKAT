@@ -3,11 +3,14 @@ package com.nurul.simpakat.login;
 import android.util.Log;
 
 import com.nurul.simpakat.R;
+import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
 import com.nurul.simpakat.common.util.ApiUtil;
 import com.nurul.simpakat.common.util.EncryptionUtils;
+import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.remote.SignInUserCreateRequest;
 import com.nurul.simpakat.model.remote.SignInUserCreateResponse;
+import com.nurul.simpakat.model.simpakat.User;
 import com.nurul.simpakat.presenter.AbstractPresenter;
 
 import retrofit2.Call;
@@ -60,6 +63,15 @@ public class LoginPresenter extends AbstractPresenter<LoginModel, LoginView, Api
 
                     responseData = response.body();
                     Log.e("RESPONSE", "response " + responseData);
+                    if(TextUtils.equalIgnoreCase(responseData.getResultCode(), Constanta.OK)) {
+                        getViewModel().setIdUser(Integer.parseInt(responseData.getData().getIdUser()));
+                        getViewModel().setEmail(responseData.getData().getEmail());
+                        getViewModel().setName(responseData.getData().getNamaUser());
+                        getViewModel().setUser(responseData.getData());
+
+                        getView().hideLoadIndicator();
+                        getView().onLoginSuccess();
+                    }
                 }
 
                 @Override

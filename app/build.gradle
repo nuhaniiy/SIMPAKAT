@@ -21,7 +21,15 @@ android {
     }
     buildTypes {
         release {
+            debuggable false
             minifyEnabled false
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -69,6 +77,9 @@ dependencies {
 
     // Calendar Material
     api 'com.applandeo:material-calendar-view:1.7.0'
+
+    // Async Post & Get
+    implementation 'com.loopj.android:android-async-http:1.4.9'
 
     // Use lombok
     compileOnly 'org.projectlombok:lombok:1.18.6'

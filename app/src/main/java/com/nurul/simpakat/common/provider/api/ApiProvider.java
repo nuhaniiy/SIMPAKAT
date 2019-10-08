@@ -1,5 +1,7 @@
 package com.nurul.simpakat.common.provider.api;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.nurul.simpakat.BuildConfig;
 import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.util.UnsafeHttpClient;
@@ -52,11 +54,15 @@ public class ApiProvider {
     }
 
     public RemoteFunctions getRemoteFunctions() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
         Retrofit retrofit =
                 new Retrofit.Builder()
                         .baseUrl(String.format("%s%s", getServerAddress(), getApplicationPath()))
                         .client(getClient())
-                        .addConverterFactory(GsonConverterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create(gson))
                         .build();
 
         return retrofit.create(RemoteFunctions.class);

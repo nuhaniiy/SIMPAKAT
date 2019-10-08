@@ -2,9 +2,11 @@ package com.nurul.simpakat;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.nurul.simpakat.common.util.PreferenceUtils;
+
 public abstract class AbstractFragmentView<T> extends DialogFragment implements BaseView<T> {
     protected T viewModel;
-//    protected PreferenceUtils appPreference;
+    protected PreferenceUtils appPreference;
 //    protected PreferenceUtils fcmPreference;
 
     @Override
@@ -22,7 +24,7 @@ public abstract class AbstractFragmentView<T> extends DialogFragment implements 
         return getString(resId);
     }
 
-    /*public void setAppPreference(PreferenceUtils preference) {
+    public void setAppPreference(PreferenceUtils preference) {
         this.appPreference = preference;
     }
 
@@ -30,7 +32,7 @@ public abstract class AbstractFragmentView<T> extends DialogFragment implements 
         return appPreference;
     }
 
-    public void setFcmPreference(PreferenceUtils preference) {
+    /*public void setFcmPreference(PreferenceUtils preference) {
         this.fcmPreference = preference;
     }
 

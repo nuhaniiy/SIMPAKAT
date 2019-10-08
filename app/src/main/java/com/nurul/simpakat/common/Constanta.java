@@ -26,4 +26,10 @@ public class Constanta {
     // API Result
     public static final String OK = "success";
     public static final String FAIL = "failed";
+
+    // Preference
+    public static final String APPLICATION_PREFERENCE = "simpakat_preference";
+    public static final String PREF_ID = "id";
+    public static final String PREF_EMAIL = "email";
+    public static final String PREF_NAME = "name";
 }

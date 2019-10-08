@@ -1,5 +1,7 @@
 package com.nurul.simpakat.login;
 
+import com.nurul.simpakat.model.simpakat.User;
+
 import lombok.Data;
 
 @Data
@@ -8,6 +10,7 @@ public class LoginModel {
     private String email;
     private String password;
     private String name;
+    private User user;
 
     public int getIdUser() {
         return idUser;
@@ -39,5 +42,13 @@ public class LoginModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

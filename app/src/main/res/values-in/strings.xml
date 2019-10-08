@@ -11,4 +11,13 @@
     <string name="password_required">Kata sandi dibutuhkan</string>
     <string name="info">Info</string>
     <string name="incorrect_email_address">Email tidak benar</string>
+
+    <string name="by_registering_i_agree">Dengan mendaftar saya menyetujui</string>
+    <string name="term_and_condition">Syarat &amp; Ketentuan</string>
+    <string name="privacy_policy">Privacy Policy</string>
+
+    <!-- Register -->
+    <string name="name_required">Nama dibutuhkan</string>
+    <string name="jabatan_required">Silahkan pilih jabatan anda</string>
+    <string name="password_and_confirm_password_not_same">Kata sandi dan konfirmasi kata sandi tidak sama</string>
 </resources>

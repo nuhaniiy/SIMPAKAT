@@ -1,13 +1,18 @@
 package com.nurul.simpakat.login;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +22,14 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.nurul.simpakat.AbstractFragmentView;
 import com.nurul.simpakat.R;
+import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
+import com.nurul.simpakat.common.util.PreferenceUtils;
+import com.nurul.simpakat.home.HomeActivity;
 import com.nurul.simpakat.login.signup.SignupUserActivity;
 import com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText;
+
+import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,6 +69,8 @@ public class LoginFragment extends AbstractFragmentView<LoginModel> implements L
 
         ButterKnife.bind(this, root);
 
+        setAppPreference(new PreferenceUtils(getActivity(), Constanta.APPLICATION_PREFERENCE));
+
         super.viewModel = new LoginModel();
         loginPresenter = new LoginPresenter();
         loginPresenter.init(super.viewModel, this, new ApiProvider());
@@ -68,11 +80,21 @@ public class LoginFragment extends AbstractFragmentView<LoginModel> implements L
         return root;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        String id = getAppPreference().getString(Constanta.PREF_ID, "");
+        String email = getAppPreference().getString(Constanta.PREF_EMAIL, "'");
+
+        if (!TextUtils.isEmpty(id) && !TextUtils.isEmpty(email)) {
+            showMasterPage();
+        }
+    }
+
+
     @OnClick(R.id.btn_login)
     void onLoginClick() {
-        /*Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-        startActivity(intent);
-        finish();*/
         Boolean doNext = true;
 
         if(email.getText().toString().equals("")){
@@ -133,7 +155,6 @@ public class LoginFragment extends AbstractFragmentView<LoginModel> implements L
 
 
         if(doNext) {
-//            Log.e("DATA", "isi email " + email.getText().toString() + " password " + password.getText().toString());
             super.viewModel.setEmail(email.getText().toString());
             super.viewModel.setPassword(password.getText().toString());
 
@@ -223,7 +244,18 @@ public class LoginFragment extends AbstractFragmentView<LoginModel> implements L
 
     @Override
     public void onLoginSuccess() {
+        String id = String.valueOf(viewModel.getIdUser());
+        String email = viewModel.getEmail();
+        String nama = viewModel.getName();
 
+
+        Log.e("user_id",id);
+
+        getAppPreference().putString(Constanta.PREF_ID, id);
+        getAppPreference().putString(Constanta.PREF_EMAIL, email);
+        getAppPreference().putString(Constanta.PREF_NAME, nama);
+
+        showMasterPage();
     }
 
     @Override
@@ -234,5 +266,11 @@ public class LoginFragment extends AbstractFragmentView<LoginModel> implements L
     @Override
     public boolean goBack() {
         return false;
+    }
+
+    private void showMasterPage() {
+        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 }

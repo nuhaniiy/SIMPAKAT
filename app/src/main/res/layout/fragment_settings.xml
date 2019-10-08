@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/space_header"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border"
+        android:layout_below="@+id/layout_header"/>
+
+    <View
+        android:id="@+id/space_before_layer_account"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border"
+        android:layout_below="@+id/space_header"
+        android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/layer_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorWhite"
+        android:padding="8dp"
+        android:layout_below="@+id/space_before_layer_account">
+
+        <TextView
+            android:id="@+id/profile_account"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:drawableStart="@drawable/menu_user"
+            android:drawableLeft="@drawable/menu_user"
+            android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+            android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+            android:drawablePadding="20dp"
+            android:gravity="center_vertical"
+            android:text="Profile Account"
+            android:textColor="@color/gray"
+            android:drawableTint="@color/gray"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="8dp"
+            android:textSize="14sp"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:background="@color/border"/>
+
+
+        <TextView
+            android:id="@+id/change_password"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:drawableStart="@drawable/menu_lock"
+            android:drawableLeft="@drawable/menu_lock"
+            android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+            android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+            android:drawablePadding="18dp"
+            android:gravity="center_vertical"
+            android:text="Change Password"
+            android:textColor="@color/gray"
+            android:drawableTint="@color/gray"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="8dp"
+            android:textSize="14sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:background="@color/border"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/space_layer_account"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border"
+        android:layout_below="@+id/layer_account"/>
+
+    <View
+        android:id="@+id/space_before_layer_logout"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/border"
+        android:layout_below="@+id/space_layer_account"/>
+
+    <LinearLayout
+        android:id="@+id/layer_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorWhite"
+        android:padding="8dp"
+        android:layout_below="@+id/space_before_layer_logout">
+
+
+        <TextView
+            android:id="@+id/delete_account"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:drawableStart="@drawable/ic_logout"
+            android:drawableLeft="@drawable/ic_logout"
+            android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+            android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+            android:drawablePadding="18dp"
+            android:gravity="center_vertical"
+            android:text="Logout"
+            android:textColor="@color/red_notification"
+            android:drawableTint="@color/red_notification"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="8dp"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border"
+        android:layout_below="@id/layer_logout"/>
+</RelativeLayout>
