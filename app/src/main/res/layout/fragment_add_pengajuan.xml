@@ -1,84 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.ui.pengajuan.AddPengajuanProkerActivity"
+    tools:context=".home.ui.pengajuan.AddPengajuanFragment"
     android:background="@color/colorBackgroundAdd">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorWhite"
-        android:theme="@style/AppTheme.NoActionBar"
-        app:elevation="0dp"
-        android:visibility="visible">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:minHeight="60dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <TextView
-                android:id="@+id/title_name"
-                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Tambah Pengajuan Proker"
-                android:textColor="@color/colorWhite" />
-
-            <ImageView
-                android:id="@+id/back_task"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_back_task" />
-
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <!--<androidx.core.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/layout_add_data_pengajuan_proker"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/app_bar"
         android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:id="@+id/label_unit_kerja"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Unit Kerja"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="14sp"
-                    android:textColor="@color/colorPrimary"
-                    />
-
-                <com.jaredrummler.materialspinner.MaterialSpinner
-                    android:id="@+id/spinner_unit_kerja"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_below="@+id/label_unit_kerja"/>
-            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -459,7 +396,6 @@
         android:id="@+id/layout_success"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/app_bar"
         android:visibility="gone">
 
         <ImageView
@@ -488,14 +424,5 @@
             android:layout_below="@id/line_title_success"
             android:textAlignment="center"
             />
-    </RelativeLayout>-->
-
-    <fragment
-        android:id="@+id/fragment_add_submission"
-        android:name="com.nurul.simpakat.home.ui.pengajuan.AddPengajuanFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        tools:layout="@layout/fragment_add_pengajuan"
-        android:layout_below="@+id/app_bar" />
+    </RelativeLayout>
 </RelativeLayout>

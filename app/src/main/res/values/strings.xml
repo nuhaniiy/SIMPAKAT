@@ -20,6 +20,15 @@
     <string name="jabatan_required">Please choose your role</string>
     <string name="password_and_confirm_password_not_same">Password and confirm password not same</string>
 
+    <!-- Program Kerja -->
+    <string name="proker_name_required">Program kerja name required</string>
+    <string name="unitkerja_required">Please choose your work program</string>
+    <string name="coa_required">Please choose your account COA</string>
+    <string name="jenis_pembiayaan_required">Please choose your jenis pembiayaan</string>
+    <string name="bulan_kegiatan_required">Please choose your bulan kegiatan</string>
+    <string name="biaya_required">Cost required</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

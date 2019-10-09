@@ -1,5 +1,7 @@
 package com.nurul.simpakat.common.provider.api;
 
+import com.nurul.simpakat.model.remote.ProkerCreateRequest;
+import com.nurul.simpakat.model.remote.ProkerCreateResponse;
 import com.nurul.simpakat.model.remote.SignInUserCreateRequest;
 import com.nurul.simpakat.model.remote.SignInUserCreateResponse;
 import com.nurul.simpakat.model.remote.SignUpUserCreateRequest;
@@ -17,4 +19,8 @@ public interface RemoteFunctions {
     @POST("simpakat_register_user.php")
     Call<SignUpUserCreateResponse> callSignUpUserCreateByEmail(
             @Body SignUpUserCreateRequest request);
+
+    @POST("simpakat_add_proker.php")
+    Call<ProkerCreateResponse> callProkerCreate(
+            @Body ProkerCreateRequest request);
 }

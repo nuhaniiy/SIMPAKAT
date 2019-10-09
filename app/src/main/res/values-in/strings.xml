@@ -20,4 +20,12 @@
     <string name="name_required">Nama dibutuhkan</string>
     <string name="jabatan_required">Silahkan pilih jabatan anda</string>
     <string name="password_and_confirm_password_not_same">Kata sandi dan konfirmasi kata sandi tidak sama</string>
+
+    <!-- Program Kerja -->
+    <string name="proker_name_required">Nama program kerja dibutuhkan</string>
+    <string name="unitkerja_required">Silahkan pilih unit kerja anda</string>
+    <string name="coa_required">Silahkan pilih akun COA anda</string>
+    <string name="jenis_pembiayaan_required">Silahkan pilih jenis pembiayaan anda</string>
+    <string name="bulan_kegiatan_required">Silahkan pilih bulan kegiatan anda</string>
+    <string name="biaya_required">Biaya dibutuhkan</string>
 </resources>

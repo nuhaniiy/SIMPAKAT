@@ -1,7 +1,7 @@
 ---- AspectJ Properties ---
 AspectJ Compiler 1.8.5 built on Thursday Jan 29, 2015 at 01:03:58 GMT
 ---- Dump Properties ---
-Dump file: ajcore.20191008.175614.472.txt
+Dump file: ajcore.20191009.122023.291.txt
 Dump reason: org.aspectj.apache.bcel.classfile.ClassFormatException
 Dump on exception: true
 Dump at exit condition: abort
@@ -124,7 +124,7 @@ sun.java.launcher=SUN_STANDARD
 idea.executable=studio
 sun.management.compiler=HotSpot 64-Bit Tiered Compilers
 idea.paths.selector=AndroidStudio3.5
-jnidispatch.path=/Users/galih/Library/Caches/AndroidStudio3.5/tmp/jna3908055087635477402.tmp
+jnidispatch.path=/Users/galih/Library/Caches/AndroidStudio3.5/tmp/jna5448422808151740631.tmp
 os.name=Mac OS X
 sun.boot.class.path=/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/jre/lib/resources.jar:/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/jre/lib/rt.jar:/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/jre/lib/sunrsasign.jar:/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/jre/lib/jsse.jar:/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/jre/lib/jce.jar:/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/jre/lib/charsets.jar:/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/jre/lib/jfr.jar:/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/jre/classes
 java.vm.specification.vendor=Oracle Corporation
@@ -179,7 +179,7 @@ awt.toolkit=sun.lwawt.macosx.LWCToolkit
 ide.new.welcome.screen.force=true
 socksNonProxyHosts=local|*.local|169.254/16|*.169.254/16
 log4j.defaultInitOverride=true
-io.netty.processId=64915
+io.netty.processId=41926
 ftp.nonProxyHosts=local|*.local|169.254/16|*.169.254/16
 idea.platform.prefix=AndroidStudio
 idea.dynamic.classpath=false
@@ -188,7 +188,7 @@ __idea.mac.env.lock=unlocked
 java.specification.vendor=Oracle Corporation
 apple.laf.useScreenMenuBar=true
 jna.encoding=UTF8
-library.jansi.path=/Users/galih/.gradle/native/jansi/1.14/osx
+library.jansi.path=/Users/galih/.gradle/native/jansi/1.17.1/osx
 java.library.path=/Users/galih/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
 java.vendor.url=https://www.jetbrains.com/
 java.vm.vendor=JetBrains s.r.o
@@ -220,7 +220,7 @@ java.vm.name=OpenJDK 64-Bit Server VM
 java.util.Arrays.useLegacyMergeSort=true
 pty4j.tmpdir=/Users/galih/Library/Caches/AndroidStudio3.5/tmp
 file.encoding=UTF-8
-studio.record.file=/Users/galih/Library/Caches/AndroidStudio3.5/tmp/AndroidStudio.508679b2-90ba-4c60-b445-4d47b15685dc
+studio.record.file=/Users/galih/Library/Caches/AndroidStudio3.5/tmp/AndroidStudio.abde2f2f-7f53-4c30-9ecf-5f53c18cc284
 pty4j.preferred.native.folder=/Applications/Android Studio.app/Contents/lib/pty4j-native
 java.specification.version=1.8
 ---- Command Line ---

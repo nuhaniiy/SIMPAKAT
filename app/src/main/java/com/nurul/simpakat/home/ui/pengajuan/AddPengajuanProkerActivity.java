@@ -9,66 +9,46 @@ import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.nurul.simpakat.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class AddPengajuanProkerActivity extends AppCompatActivity {
 
-    EditText tanggalPengajuan;
-    final Calendar myCalendar = Calendar.getInstance();
+    @BindView(R.id.app_bar)
+    public AppBarLayout appBarLayout;
 
+    private static AddPengajuanProkerActivity instance;
+
+    public static final AddPengajuanProkerActivity instance() {
+        if (instance != null)
+            return instance;
+        throw new RuntimeException("Act not instantiated yet");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pengajuan_proker);
 
-        init();
+        ButterKnife.bind(this);
+
+        instance = this;
     }
 
-    private void init() {
-        setBindingData();
-        setOnClick();
+    public void hideAppBar() {
+        appBarLayout.setVisibility(View.GONE);
     }
 
-    private void setBindingData() {
-        tanggalPengajuan = findViewById(R.id.layout_tanggal_pengajuan);
-    }
-
-    private void setOnClick() {
-        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                // TODO Auto-generated method stub
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
-            }
-
-        };
-
-        tanggalPengajuan.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                new DatePickerDialog(AddPengajuanProkerActivity.this, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
-    }
-
-    private void updateLabel() {
-        String myFormat = "dd/MM/yyyy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
-        tanggalPengajuan.setText(sdf.format(myCalendar.getTime()));
+    @OnClick(R.id.back_task)
+    void moveTaskBack(){
+        finish();
     }
 }
