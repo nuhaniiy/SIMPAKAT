@@ -9,7 +9,15 @@ import lombok.Data;
 public class SignUpUserCreateRequest {
 
     @Expose
-    @SerializedName("nama_user")
+    @SerializedName("NIP")
+    private String nip;
+
+    @Expose
+    @SerializedName("kode_unit_kerja")
+    private String kodeUnitKerja;
+
+    @Expose
+    @SerializedName("nama")
     private String namaUser;
 
     @Expose
@@ -31,6 +39,22 @@ public class SignUpUserCreateRequest {
     @Expose
     @SerializedName("last_online")
     private String lastOnline;
+
+    public String getNip() {
+        return nip;
+    }
+
+    public void setNip(String nip) {
+        this.nip = nip;
+    }
+
+    public String getKodeUnitKerja() {
+        return kodeUnitKerja;
+    }
+
+    public void setKodeUnitKerja(String kodeUnitKerja) {
+        this.kodeUnitKerja = kodeUnitKerja;
+    }
 
     public String getNamaUser() {
         return namaUser;

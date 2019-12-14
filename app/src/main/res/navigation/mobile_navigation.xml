@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.nurul.simpakat.home.ui.proker.ProgramKerjaFragment"
+        android:name="com.nurul.simpakat.view.home.ui.proker.ProgramKerjaFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_program_kerja" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.nurul.simpakat.home.ui.pengajuan.PengajuanProkerFragment"
+        android:name="com.nurul.simpakat.view.home.ui.pengajuan.PengajuanProkerFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_pengajuan_proker" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.nurul.simpakat.home.ui.pengaturan.SettingFragment"
+        android:name="com.nurul.simpakat.view.home.ui.pengaturan.SettingFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_settings" />
 </navigation>

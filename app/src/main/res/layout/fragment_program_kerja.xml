@@ -7,7 +7,8 @@
     <RelativeLayout
         android:id="@+id/no_list_data"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/no_data_title"
@@ -54,4 +55,15 @@
         app:backgroundTint="@color/colorWhite"
         android:layout_margin="10dp"
         app:srcCompat="@drawable/ic_assignment_white"/>
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/proker_list_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="14dp"
+        app:indicatorName="BallPulseIndicator"
+        app:indicatorColor="@color/colorPrimary"/>
 </RelativeLayout>

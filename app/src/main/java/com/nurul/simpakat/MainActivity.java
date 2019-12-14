@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.nurul.simpakat.login.LoginActivity;
+import com.nurul.simpakat.view.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 

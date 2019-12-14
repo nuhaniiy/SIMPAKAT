@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.signup.SignupUserActivity">
+    tools:context=".view.login.signup.SignupUserActivity">
 
     <fragment
         android:id="@+id/fragment_login"
-        android:name="com.nurul.simpakat.login.signup.SignupUserFragment"
+        android:name="com.nurul.simpakat.view.login.signup.SignupUserFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"

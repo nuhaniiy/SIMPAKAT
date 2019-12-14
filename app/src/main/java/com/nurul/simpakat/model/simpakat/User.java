@@ -5,23 +5,23 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
     @Expose
-    @SerializedName("id_user")
-    public String idUser;
+    @SerializedName("nip")
+    public String nip;
 
     @Expose
     @SerializedName("email")
     public String email;
 
     @Expose
-    @SerializedName("nama_user")
+    @SerializedName("nama")
     public String namaUser;
 
-    public String getIdUser() {
-        return idUser;
+    public String getNip() {
+        return nip;
     }
 
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
+    public void setNip(String nip) {
+        this.nip = nip;
     }
 
     public String getEmail() {

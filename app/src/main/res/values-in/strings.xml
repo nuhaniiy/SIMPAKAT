@@ -5,12 +5,15 @@
     <string name="title_home">Program Kerja</string>
     <string name="title_dashboard">Pengajuan</string>
     <string name="title_notifications">Pengaturan</string>
+    <string name="loading">Memuat</string>
 
     <!-- Login -->
+    <string name="nip_required">NIP dibutuhkan</string>
     <string name="email_address_required">Alamat email dibutuhkan</string>
     <string name="password_required">Kata sandi dibutuhkan</string>
     <string name="info">Info</string>
     <string name="incorrect_email_address">Email tidak benar</string>
+    <string name="incorrect_nip">NIP tidak bener</string>
 
     <string name="by_registering_i_agree">Dengan mendaftar saya menyetujui</string>
     <string name="term_and_condition">Syarat &amp; Ketentuan</string>
@@ -19,6 +22,7 @@
     <!-- Register -->
     <string name="name_required">Nama dibutuhkan</string>
     <string name="jabatan_required">Silahkan pilih jabatan anda</string>
+    <string name="unit_kerja_required">Silahkan pilih unit kerja anda</string>
     <string name="password_and_confirm_password_not_same">Kata sandi dan konfirmasi kata sandi tidak sama</string>
 
     <!-- Program Kerja -->
@@ -28,4 +32,12 @@
     <string name="jenis_pembiayaan_required">Silahkan pilih jenis pembiayaan anda</string>
     <string name="bulan_kegiatan_required">Silahkan pilih bulan kegiatan anda</string>
     <string name="biaya_required">Biaya dibutuhkan</string>
+
+    <!-- Pengajuan Proker -->
+    <string name="biaya_terpakai_required">Biaya terpakai dibutuhkan</string>
+    <string name="biaya_diajukan_required">Biaya diajukan dibutuhkan</string>
+    <string name="biaya_sisa_required">Sisa biaya dibutuhkan</string>
+    <string name="dibayarkan_kepada_required">Dibayarkan kepada dibutuhkan</string>
+    <string name="nomer_rekening_required">Nomor rekening dibutuhkan</string>
+    <string name="tanggal_pengajuan_required">Tanggal pengajuan dibutuhkan</string>
 </resources>

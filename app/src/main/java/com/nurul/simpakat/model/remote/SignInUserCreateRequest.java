@@ -8,19 +8,19 @@ import lombok.Data;
 @Data
 public class SignInUserCreateRequest {
     @Expose
-    @SerializedName("email")
-    private String email;
+    @SerializedName("nip")
+    private String nip;
 
     @Expose
     @SerializedName("password")
     private String password;
 
-    public String getEmail() {
-        return email;
+    public String getNip() {
+        return nip;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNip(String nip) {
+        this.nip = nip;
     }
 
     public String getPassword() {

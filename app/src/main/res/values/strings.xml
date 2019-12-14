@@ -4,12 +4,15 @@
     <string name="title_home">Work Programs</string>
     <string name="title_dashboard">Submissions</string>
     <string name="title_notifications">Settings</string>
+    <string name="loading">Loading</string>
 
     <!-- Login -->
+    <string name="nip_required">NIP required</string>
     <string name="email_address_required">Email address required</string>
     <string name="password_required">Password required</string>
     <string name="info">Info</string>
     <string name="incorrect_email_address">Incorrect email address</string>
+    <string name="incorrect_nip">Incorrect NIP</string>
 
     <string name="by_registering_i_agree">By registering I agree to the</string>
     <string name="term_and_condition">Term &amp; Condition</string>
@@ -18,6 +21,7 @@
     <!-- Register -->
     <string name="name_required">Name required</string>
     <string name="jabatan_required">Please choose your role</string>
+    <string name="unit_kerja_required">Please choose your unit kerja</string>
     <string name="password_and_confirm_password_not_same">Password and confirm password not same</string>
 
     <!-- Program Kerja -->
@@ -28,7 +32,12 @@
     <string name="bulan_kegiatan_required">Please choose your bulan kegiatan</string>
     <string name="biaya_required">Cost required</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Pengajuan Proker -->
+    <string name="biaya_terpakai_required">Cost used required</string>
+    <string name="biaya_diajukan_required">Cost filed required</string>
+    <string name="biaya_sisa_required">Remaining costs required</string>
+    <string name="dibayarkan_kepada_required">Paid to required</string>
+    <string name="nomer_rekening_required">Account number required</string>
+    <string name="tanggal_pengajuan_required">date of filing required</string>
 
 </resources>

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.ui.pengajuan.AddPengajuanFragment"
+    tools:context=".view.home.ui.pengajuan.AddPengajuanFragment"
     android:background="@color/colorBackgroundAdd">
 
     <androidx.core.widget.NestedScrollView
@@ -399,7 +399,7 @@
         android:visibility="gone">
 
         <ImageView
-            android:id="@+id/icon_add_proker_sukses"
+            android:id="@+id/icon_add_pengajuanproker_sukses"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/logo_apps"
@@ -409,18 +409,18 @@
             android:id="@+id/line_title_success"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Program Kerja Added"
+            android:text="Pengajuan Program Kerja Added"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/icon_add_proker_sukses"/>
+            android:layout_below="@+id/icon_add_pengajuanproker_sukses"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your program kerja successfully added &#10; Check your list data."
+            android:text="Your pengajuan program kerja successfully added &#10; Check your list data."
             android:layout_below="@id/line_title_success"
             android:textAlignment="center"
             />

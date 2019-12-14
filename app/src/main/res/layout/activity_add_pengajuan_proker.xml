@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.ui.pengajuan.AddPengajuanProkerActivity"
+    tools:context=".view.home.ui.pengajuan.AddPengajuanProkerActivity"
     android:background="@color/colorBackgroundAdd">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -492,7 +492,7 @@
 
     <fragment
         android:id="@+id/fragment_add_submission"
-        android:name="com.nurul.simpakat.home.ui.pengajuan.AddPengajuanFragment"
+        android:name="com.nurul.simpakat.view.home.ui.pengajuan.AddPengajuanFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"

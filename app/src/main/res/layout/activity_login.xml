@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.LoginActivity">
+    tools:context=".view.login.LoginActivity">
 
     <RelativeLayout
         android:id="@+id/header_login"
@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/fragment_login"
-        android:name="com.nurul.simpakat.login.LoginFragment"
+        android:name="com.nurul.simpakat.view.login.LoginFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"

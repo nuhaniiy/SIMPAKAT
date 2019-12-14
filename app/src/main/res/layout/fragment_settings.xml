@@ -9,7 +9,62 @@
         android:layout_width="match_parent"
         android:layout_height="150dp">
 
+        <ImageView
+            android:id="@+id/img_pict"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_alignParentLeft="true"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/img_pict"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/setting_nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama User"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/setting_nip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NIP : 130xxx"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageView
+                    android:id="@+id/icon_online"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_online_status"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Online"
+                    android:textSize="10sp"
+                    android:layout_toRightOf="@+id/icon_online"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"/>
+            </RelativeLayout>
+        </LinearLayout>
     </RelativeLayout>
 
     <View

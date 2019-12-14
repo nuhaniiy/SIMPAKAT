@@ -15,21 +15,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".login.signup.SuccessRegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".view.home.ui.proker.DetailProgramKerjaActivity"></activity>
         <activity
-            android:name=".login.signup.SignupUserActivity"
+            android:name=".view.login.signup.SuccessRegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".home.ui.pengajuan.AddPengajuanProkerActivity"
+            android:name=".view.login.signup.SignupUserActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.home.ui.pengajuan.AddPengajuanProkerActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".home.ui.proker.AddProgramKerjaActivity"
+            android:name=".view.home.ui.proker.AddProgramKerjaActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".home.HomeActivity"
+            android:name=".view.home.HomeActivity"
             android:label="@string/title_activity_home" />
         <activity
             android:name=".MainActivity"
@@ -42,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".login.LoginActivity"
+            android:name=".view.login.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
