@@ -1,5 +1,7 @@
 package com.nurul.simpakat.common.provider.api;
 
+import com.nurul.simpakat.model.remote.ForgetPasswordCreateRequest;
+import com.nurul.simpakat.model.remote.ForgetPasswordResponse;
 import com.nurul.simpakat.model.remote.ListDatProkerResponse;
 import com.nurul.simpakat.model.remote.ListDataPengajuanResponse;
 import com.nurul.simpakat.model.remote.PengajuanCreateRequest;
@@ -38,4 +40,8 @@ public interface RemoteFunctions {
 
     @GET("simpakat_get_data_pengajuan.php")
     Call<ListDataPengajuanResponse> callGetDataPengajuan();
+
+    @POST("simpakat_check_email_user.php")
+    Call<ForgetPasswordResponse> callForgetPassword(
+            @Body ForgetPasswordCreateRequest request);
 }

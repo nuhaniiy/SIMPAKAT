@@ -40,4 +40,7 @@
     <string name="nomer_rekening_required">Account number required</string>
     <string name="tanggal_pengajuan_required">date of filing required</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

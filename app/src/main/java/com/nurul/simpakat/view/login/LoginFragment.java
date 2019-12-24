@@ -24,6 +24,7 @@ import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
 import com.nurul.simpakat.common.util.PreferenceUtils;
 import com.nurul.simpakat.view.home.HomeActivity;
+import com.nurul.simpakat.view.login.changePassword.ForgetPasswordActivity;
 import com.nurul.simpakat.view.login.signup.SignupUserActivity;
 import com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText;
 
@@ -161,6 +162,11 @@ public class LoginFragment extends AbstractFragmentView<LoginModel> implements L
         }
     }
 
+    @OnClick(R.id.lupa_password)
+    void onForgetPassword() {
+        startActivity(new Intent(getActivity(), ForgetPasswordActivity.class));
+    }
+
     @OnClick(R.id.signup_user)
     void onSingupUser() {
         startActivity(new Intent(getActivity(), SignupUserActivity.class));
@@ -235,10 +241,6 @@ public class LoginFragment extends AbstractFragmentView<LoginModel> implements L
                 til.setError(null);
             }, 0);
         });
-    }
-
-    private boolean isValidEmailID(String email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     @Override
