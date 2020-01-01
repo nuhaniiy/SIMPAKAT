@@ -1,7 +1,8 @@
-package com.nurul.simpakat.view.login.changePassword;
+package com.nurul.simpakat.presenter;
 
 import android.util.Log;
 
+import com.nurul.simpakat.R;
 import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
 import com.nurul.simpakat.common.util.ApiUtil;
@@ -9,6 +10,8 @@ import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.remote.ForgetPasswordCreateRequest;
 import com.nurul.simpakat.model.remote.ForgetPasswordResponse;
 import com.nurul.simpakat.presenter.AbstractPresenter;
+import com.nurul.simpakat.view.login.changePassword.ForgetPasswordModel;
+import com.nurul.simpakat.view.login.changePassword.ForgetPasswordView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,15 +62,20 @@ public class ForgetPasswordPresenter extends AbstractPresenter<ForgetPasswordMod
                         getView().onChangeSuccess();
                     } else {
                         getView().hideLoadIndicator();
-                        getView().displayMessage("Login", responseData.getReasonText(), false);
+                        getView().displayMessage("Forget Password", responseData.getReasonText(), false);
                     }
                 }
 
                 @Override
                 public void onFailure(Call<ForgetPasswordResponse> call, Throwable t) {
-
+                    Log.e("ERROR", "error forget password : " + t.getMessage());
+                    getView().hideLoadIndicator();
                 }
             });
+        } else {
+            getView().displayMessage(
+                    getView().getResourceString(R.string.info),
+                    getView().getResourceString(R.string.email_address_required));
         }
     }
 }

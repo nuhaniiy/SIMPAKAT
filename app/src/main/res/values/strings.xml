@@ -10,6 +10,7 @@
     <string name="nip_required">NIP required</string>
     <string name="email_address_required">Email address required</string>
     <string name="password_required">Password required</string>
+    <string name="password_incorrect">Your Password mismatch</string>
     <string name="info">Info</string>
     <string name="incorrect_email_address">Incorrect email address</string>
     <string name="incorrect_nip">Incorrect NIP</string>

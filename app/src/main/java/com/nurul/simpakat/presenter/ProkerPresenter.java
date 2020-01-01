@@ -1,4 +1,4 @@
-package com.nurul.simpakat.view.home.ui.proker;
+package com.nurul.simpakat.presenter;
 
 import android.util.Log;
 
@@ -11,6 +11,8 @@ import com.nurul.simpakat.model.remote.ListDatProkerResponse;
 import com.nurul.simpakat.model.remote.ProkerCreateRequest;
 import com.nurul.simpakat.model.remote.ProkerCreateResponse;
 import com.nurul.simpakat.presenter.AbstractPresenter;
+import com.nurul.simpakat.view.home.ui.proker.ProkerModel;
+import com.nurul.simpakat.view.home.ui.proker.ProkerView;
 
 import retrofit2.Call;
 import retrofit2.Callback;

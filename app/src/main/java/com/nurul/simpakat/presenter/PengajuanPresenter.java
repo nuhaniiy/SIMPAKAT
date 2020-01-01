@@ -1,4 +1,4 @@
-package com.nurul.simpakat.view.home.ui.pengajuan;
+package com.nurul.simpakat.presenter;
 
 import android.util.Log;
 
@@ -11,6 +11,8 @@ import com.nurul.simpakat.model.remote.ListDataPengajuanResponse;
 import com.nurul.simpakat.model.remote.PengajuanCreateRequest;
 import com.nurul.simpakat.model.remote.PengajuanCreateResponse;
 import com.nurul.simpakat.presenter.AbstractPresenter;
+import com.nurul.simpakat.view.home.ui.pengajuan.PengajuanModel;
+import com.nurul.simpakat.view.home.ui.pengajuan.PengajuanView;
 
 import retrofit2.Call;
 import retrofit2.Callback;

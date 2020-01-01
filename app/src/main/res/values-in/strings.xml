@@ -11,6 +11,7 @@
     <string name="nip_required">NIP dibutuhkan</string>
     <string name="email_address_required">Alamat email dibutuhkan</string>
     <string name="password_required">Kata sandi dibutuhkan</string>
+    <string name="password_incorrect">Kata sandi tidak sesuai</string>
     <string name="info">Info</string>
     <string name="incorrect_email_address">Email tidak benar</string>
     <string name="incorrect_nip">NIP tidak bener</string>

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +22,7 @@ import com.nurul.simpakat.AbstractFragmentView;
 import com.nurul.simpakat.R;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
 import com.nurul.simpakat.model.simpakat.ListPengajuan;
+import com.nurul.simpakat.presenter.PengajuanPresenter;
 import com.nurul.simpakat.view.home.adapter.ListPengajuanAdapter;
 import com.wang.avi.AVLoadingIndicatorView;
 

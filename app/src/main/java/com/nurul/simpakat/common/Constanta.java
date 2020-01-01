@@ -32,6 +32,8 @@ public class Constanta {
     public static final String PREF_ID = "id";
     public static final String PREF_EMAIL = "email";
     public static final String PREF_NAME = "name";
+    public static final String PREF_FCM_TOKEN = "fcm_token";
+    public static final int NOTIFY_SUBMISSION = 1010;
 
     public static boolean isValidEmailID(String email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();

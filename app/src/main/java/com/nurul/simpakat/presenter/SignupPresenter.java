@@ -1,4 +1,4 @@
-package com.nurul.simpakat.view.login.signup;
+package com.nurul.simpakat.presenter;
 
 import android.util.Log;
 
@@ -11,6 +11,8 @@ import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.remote.SignUpUserCreateRequest;
 import com.nurul.simpakat.model.remote.SignUpUserCreateResponse;
 import com.nurul.simpakat.presenter.AbstractPresenter;
+import com.nurul.simpakat.view.login.signup.SignupModel;
+import com.nurul.simpakat.view.login.signup.SignupView;
 
 import retrofit2.Call;
 import retrofit2.Callback;

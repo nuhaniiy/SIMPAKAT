@@ -16,6 +16,7 @@ import com.amulyakhare.textdrawable.TextDrawable;
 import com.nurul.simpakat.R;
 import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.util.PreferenceUtils;
+import com.nurul.simpakat.view.home.ui.pengaturan.password.ChangePasswordActivity;
 import com.nurul.simpakat.view.login.LoginActivity;
 
 import butterknife.BindView;
@@ -85,6 +86,11 @@ public class SettingFragment extends Fragment {
                 .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> onClickTextLogout())
                 .setNegativeButton(android.R.string.no, (dialog, whichButton) -> dialog.dismiss())
                 .show();
+    }
+
+    @OnClick(R.id.change_password)
+    void onChangePasswordSetting() {
+        startActivity(new Intent(getActivity(), ChangePasswordActivity.class));
     }
 
     private void onClickTextLogout() {

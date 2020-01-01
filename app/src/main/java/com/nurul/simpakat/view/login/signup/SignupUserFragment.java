@@ -25,6 +25,7 @@ import com.nurul.simpakat.R;
 import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
 import com.nurul.simpakat.common.util.TextUtils;
+import com.nurul.simpakat.presenter.SignupPresenter;
 import com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText;
 
 import org.json.JSONArray;

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "204700423740",
+    "firebase_url": "https://simpakat-a7029.firebaseio.com",
+    "project_id": "simpakat-a7029",
+    "storage_bucket": "simpakat-a7029.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204700423740:android:50d5c0d3008c1962cc5539",
+        "android_client_info": {
+          "package_name": "com.nurul.simpakat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204700423740-513fgv12962recgpa6t9jq0qe3vc218e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nurul.simpakat",
+            "certificate_hash": "88de55f98c5646db983c6b5f0e6697097be6d985"
+          }
+        },
+        {
+          "client_id": "204700423740-36en8333mkmeomdpjtjleg9hcadeh67i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpF2gdKAshJU3doNldSK7awb6pUihAbUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204700423740-36en8333mkmeomdpjtjleg9hcadeh67i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

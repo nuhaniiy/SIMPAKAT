@@ -33,6 +33,7 @@ import com.nurul.simpakat.common.provider.api.ApiProvider;
 import com.nurul.simpakat.common.util.PreferenceUtils;
 import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.simpakat.ListPengajuan;
+import com.nurul.simpakat.presenter.PengajuanPresenter;
 
 import org.json.JSONArray;
 import org.json.JSONException;

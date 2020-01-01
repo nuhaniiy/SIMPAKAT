@@ -21,6 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nurul.simpakat.AbstractFragmentView;
 import com.nurul.simpakat.R;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
+import com.nurul.simpakat.presenter.ProkerPresenter;
 import com.nurul.simpakat.view.home.adapter.ListProkerAdapter;
 import com.nurul.simpakat.model.simpakat.ListProker;
 import com.wang.avi.AVLoadingIndicatorView;

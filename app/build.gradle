@@ -7,6 +7,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    signingConfigs {
+        config {
+            keyAlias 'simpakat'
+            keyPassword 'Simpakat1234'
+            storeFile file('/Users/galih/kehidupan/SIMPAKAT/keystore.jks')
+            storePassword 'Simpakat1234'
+        }
+    }
+
     compileSdkVersion 29
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
@@ -99,6 +108,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
 
+    // Firebase
+    implementation 'com.google.firebase:firebase-analytics:17.2.1'
+    implementation 'com.google.firebase:firebase-messaging:20.1.0'
+    implementation 'com.google.firebase:firebase-core:17.2.1'
+
     implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
     implementation 'androidx.navigation:navigation-fragment:2.0.0'
     implementation 'androidx.navigation:navigation-ui:2.0.0'
@@ -110,3 +124,5 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+apply plugin: 'com.google.gms.google-services'

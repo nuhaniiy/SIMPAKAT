@@ -23,6 +23,7 @@ import com.nurul.simpakat.R;
 import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
 import com.nurul.simpakat.common.util.PreferenceUtils;
+import com.nurul.simpakat.presenter.LoginPresenter;
 import com.nurul.simpakat.view.home.HomeActivity;
 import com.nurul.simpakat.view.login.changePassword.ForgetPasswordActivity;
 import com.nurul.simpakat.view.login.signup.SignupUserActivity;
