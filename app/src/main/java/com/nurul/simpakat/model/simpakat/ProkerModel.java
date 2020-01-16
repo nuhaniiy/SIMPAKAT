@@ -1,4 +1,4 @@
-package com.nurul.simpakat.view.home.ui.proker;
+package com.nurul.simpakat.model.simpakat;
 
 public class ProkerModel {
     private String unitKerja;
@@ -8,6 +8,7 @@ public class ProkerModel {
     private String jenisPembiayaan;
     private String biaya;
     private String bulanKegiatan;
+    private String jabatan;
 
     public String getUnitKerja() {
         return unitKerja;
@@ -63,5 +64,13 @@ public class ProkerModel {
 
     public void setBulanKegiatan(String bulanKegiatan) {
         this.bulanKegiatan = bulanKegiatan;
+    }
+
+    public String getJabatan() {
+        return jabatan;
+    }
+
+    public void setJabatan(String jabatan) {
+        this.jabatan = jabatan;
     }
 }

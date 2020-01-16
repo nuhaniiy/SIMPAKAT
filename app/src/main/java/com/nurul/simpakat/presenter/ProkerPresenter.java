@@ -10,9 +10,9 @@ import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.remote.ListDatProkerResponse;
 import com.nurul.simpakat.model.remote.ProkerCreateRequest;
 import com.nurul.simpakat.model.remote.ProkerCreateResponse;
-import com.nurul.simpakat.presenter.AbstractPresenter;
-import com.nurul.simpakat.view.home.ui.proker.ProkerModel;
-import com.nurul.simpakat.view.home.ui.proker.ProkerView;
+import com.nurul.simpakat.model.remote.RetrieveProkerRequest;
+import com.nurul.simpakat.model.simpakat.ProkerModel;
+import com.nurul.simpakat.view.ProkerView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -104,8 +104,18 @@ public class ProkerPresenter extends AbstractPresenter<ProkerModel, ProkerView, 
         }
     }
 
-    public void requestDataProkerFromServer() {
-        callListProkers = getRemoteFunctions().callGetDataProker();
+    public void requestDataProkerFromServer(String jabatan) {
+        RetrieveProkerRequest retrieveProkerRequest = new RetrieveProkerRequest();
+
+        String role = jabatan;
+        if (android.text.TextUtils.isEmpty(role)) {
+            getView().displayMessage(
+                    getView().getResourceString(R.string.info),
+                    getView().getResourceString(R.string.jabatan_required));
+        }
+
+        retrieveProkerRequest.setJabatan(jabatan);
+        callListProkers = getRemoteFunctions().callGetDataProker(retrieveProkerRequest);
 
         callListProkers.enqueue(new Callback<ListDatProkerResponse>() {
 
@@ -134,6 +144,7 @@ public class ProkerPresenter extends AbstractPresenter<ProkerModel, ProkerView, 
             public void onFailure(Call<ListDatProkerResponse> call, Throwable t) {
                 Log.e("ERROR", "error add proker : " + t.getMessage());
                 getView().hideLoadIndicator();
+                getView().onProkerNull();
             }
         });
     }

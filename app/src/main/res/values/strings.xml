@@ -4,6 +4,7 @@
     <string name="title_home">Work Programs</string>
     <string name="title_dashboard">Submissions</string>
     <string name="title_notifications">Settings</string>
+    <string name="title_list_submission">List Submissions</string>
     <string name="loading">Loading</string>
 
     <!-- Login -->

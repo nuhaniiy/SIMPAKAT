@@ -33,7 +33,9 @@ import com.nurul.simpakat.common.provider.api.ApiProvider;
 import com.nurul.simpakat.common.util.PreferenceUtils;
 import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.simpakat.ListPengajuan;
+import com.nurul.simpakat.model.simpakat.PengajuanModel;
 import com.nurul.simpakat.presenter.PengajuanPresenter;
+import com.nurul.simpakat.view.PengajuanView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -227,6 +229,7 @@ public class AddPengajuanFragment extends AbstractFragmentView<PengajuanModel> i
         client.setTimeout(60000);
         RequestParams params = new RequestParams();
 
+        params.put("NIP", getAppPreference().getString(Constanta.PREF_ID, ""));
         params.setUseJsonStreamer(true);
 
         client.post(url,params, new AsyncHttpResponseHandler() {
@@ -565,7 +568,54 @@ public class AddPengajuanFragment extends AbstractFragmentView<PengajuanModel> i
             super.viewModel.setStatusPengajuan("Proses Diajukan");
 
             pengajuanPresenter.insertPengajuan();
+            sendNotification(getAppPreference().getString(Constanta.PREF_KODE_UNIT_KERJA, ""),
+                    getAppPreference().getString(Constanta.PREF_JABATAN, ""),
+                    getAppPreference().getString(Constanta.PREF_NAME, ""));
         }
+    }
+
+    private void sendNotification(String kodeUnitKerja, String jabatan, String nama) {
+        String url = APPLICATION_URL+APPLICATION_PATH+"simpakat_push_notification.php";
+        AsyncHttpClient client = new AsyncHttpClient(true,80,443);
+        client.setTimeout(60000);
+        RequestParams params = new RequestParams();
+        params.put("kode_unit_kerja", kodeUnitKerja);
+        params.put("jabatan", jabatan);
+        params.put("nama", nama);
+        params.setUseJsonStreamer(true);
+
+        client.post(url,params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+                String response = null;
+                try {
+                    response = new String(responseBody, "UTF-8");
+                    Log.d("respond",response);
+                    JSONObject json, jsonData;
+                    try {
+                        json = new JSONObject(response);
+                        Log.d("respond","response notification : " + json.getString("resultCode"));
+
+                    } catch (JSONException ex) {
+
+                    }
+
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+                String response;
+                try {
+                    response = new String(responseBody, "UTF-8");
+                    Log.d("error",response);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private void showLayoutSuccess() {

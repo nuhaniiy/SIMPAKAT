@@ -1,4 +1,4 @@
-package com.nurul.simpakat.view.login;
+package com.nurul.simpakat.model.simpakat;
 
 import com.nurul.simpakat.model.simpakat.User;
 
@@ -11,6 +11,9 @@ public class LoginModel {
     private String password;
     private String name;
     private User user;
+    private String dToken;
+    private String jabatan;
+    private String kodeUnitKerja;
 
     public String getNip() {
         return nip;
@@ -50,5 +53,29 @@ public class LoginModel {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getdToken() {
+        return dToken;
+    }
+
+    public void setdToken(String dToken) {
+        this.dToken = dToken;
+    }
+
+    public String getJabatan() {
+        return jabatan;
+    }
+
+    public void setJabatan(String jabatan) {
+        this.jabatan = jabatan;
+    }
+
+    public String getKodeUnitKerja() {
+        return kodeUnitKerja;
+    }
+
+    public void setKodeUnitKerja(String kodeUnitKerja) {
+        this.kodeUnitKerja = kodeUnitKerja;
     }
 }

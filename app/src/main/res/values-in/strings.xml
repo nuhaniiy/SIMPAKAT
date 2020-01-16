@@ -4,6 +4,7 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Program Kerja</string>
     <string name="title_dashboard">Pengajuan</string>
+    <string name="title_list_submission">Data Pengajuan</string>
     <string name="title_notifications">Pengaturan</string>
     <string name="loading">Memuat</string>
 

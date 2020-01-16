@@ -20,9 +20,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nurul.simpakat.AbstractFragmentView;
 import com.nurul.simpakat.R;
+import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
+import com.nurul.simpakat.common.util.PreferenceUtils;
 import com.nurul.simpakat.model.simpakat.ListPengajuan;
+import com.nurul.simpakat.model.simpakat.PengajuanModel;
 import com.nurul.simpakat.presenter.PengajuanPresenter;
+import com.nurul.simpakat.view.PengajuanView;
 import com.nurul.simpakat.view.home.adapter.ListPengajuanAdapter;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -65,6 +69,8 @@ public class PengajuanProkerFragment extends AbstractFragmentView<PengajuanModel
 
         ButterKnife.bind(this, root);
 
+        setAppPreference(new PreferenceUtils(getActivity(), Constanta.APPLICATION_PREFERENCE));
+
         fabAddSubmission.setOnClickListener(view -> {
             startActivity(new Intent(getActivity(), AddPengajuanProkerActivity.class));
         });
@@ -80,7 +86,7 @@ public class PengajuanProkerFragment extends AbstractFragmentView<PengajuanModel
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        pengajuanPresenter.requestDataPengajuanFromServer();
+        pengajuanPresenter.requestDataPengajuanFromServer(getAppPreference().getString(Constanta.PREF_ID, ""));
     }
 
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -90,7 +96,7 @@ public class PengajuanProkerFragment extends AbstractFragmentView<PengajuanModel
 //            String topic = intent.getAction();
             String from = intent.getStringExtra("from");
             if(from.equals("added")) {
-                pengajuanPresenter.requestDataPengajuanFromServer();
+                pengajuanPresenter.requestDataPengajuanFromServer(getAppPreference().getString(Constanta.PREF_ID, ""));
             }
         }
     };

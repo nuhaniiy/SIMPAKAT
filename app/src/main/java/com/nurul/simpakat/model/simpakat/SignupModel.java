@@ -1,4 +1,4 @@
-package com.nurul.simpakat.view.login.signup;
+package com.nurul.simpakat.model.simpakat;
 
 import lombok.Data;
 
@@ -11,6 +11,7 @@ public class SignupModel {
     private String password;
     private String confirmPassword;
     private String jabatan;
+    private String dToken;
 
     public String getNIP() {
         return NIP;
@@ -66,5 +67,13 @@ public class SignupModel {
 
     public void setJabatan(String jabatan) {
         this.jabatan = jabatan;
+    }
+
+    public String getdToken() {
+        return dToken;
+    }
+
+    public void setdToken(String dToken) {
+        this.dToken = dToken;
     }
 }

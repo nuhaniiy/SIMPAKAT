@@ -30,7 +30,9 @@ import com.nurul.simpakat.common.provider.api.ApiProvider;
 import com.nurul.simpakat.common.util.PreferenceUtils;
 import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.simpakat.ListProker;
+import com.nurul.simpakat.model.simpakat.ProkerModel;
 import com.nurul.simpakat.presenter.ProkerPresenter;
+import com.nurul.simpakat.view.ProkerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;

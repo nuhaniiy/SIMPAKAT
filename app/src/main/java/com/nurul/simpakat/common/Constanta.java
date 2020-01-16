@@ -32,6 +32,8 @@ public class Constanta {
     public static final String PREF_ID = "id";
     public static final String PREF_EMAIL = "email";
     public static final String PREF_NAME = "name";
+    public static final String PREF_JABATAN = "jabatan";
+    public static final String PREF_KODE_UNIT_KERJA = "kode_unit_kerja";
     public static final String PREF_FCM_TOKEN = "fcm_token";
     public static final int NOTIFY_SUBMISSION = 1010;
 

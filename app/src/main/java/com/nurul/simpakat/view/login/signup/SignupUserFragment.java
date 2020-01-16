@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -25,7 +26,9 @@ import com.nurul.simpakat.R;
 import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
 import com.nurul.simpakat.common.util.TextUtils;
+import com.nurul.simpakat.model.simpakat.SignupModel;
 import com.nurul.simpakat.presenter.SignupPresenter;
+import com.nurul.simpakat.view.SignupView;
 import com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText;
 
 import org.json.JSONArray;
@@ -416,12 +419,20 @@ public class SignupUserFragment extends AbstractFragmentView<SignupModel> implem
         }
 
         if(doNext) {
+            String dToken;
+            Log.d("TOKEN", "isi token : " + FirebaseInstanceId.getInstance().getToken());
+            if(getAppPreference().getString(Constanta.PREF_FCM_TOKEN, null) != null) {
+                dToken = getAppPreference().getString(Constanta.PREF_FCM_TOKEN, "");
+            } else {
+                dToken = FirebaseInstanceId.getInstance().getToken();
+            }
             super.viewModel.setNIP(editNIP.getText().toString());
             super.viewModel.setName(editName.getText().toString());
             super.viewModel.setEmail(editEmail.getText().toString());
             super.viewModel.setPassword(editPassword.getText().toString());
             super.viewModel.setConfirmPassword(editConfirmPassword.getText().toString());
             super.viewModel.setJabatan(spinnerJabatan.getText().toString());
+            super.viewModel.setdToken(dToken);
             if(spinnerJabatan.getText().toString().equalsIgnoreCase("Unit Kerja")
                     || spinnerJabatan.getText().toString().equalsIgnoreCase("Dekan")) {
                 String[] idUnitKerja = spinnerUnitKerja.getText().toString().replace(" ","").split("-");

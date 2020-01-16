@@ -11,6 +11,11 @@
         android:icon="@drawable/ic_pengajuan_menu"
         android:title="@string/title_dashboard" />
 
+<!--    <item-->
+<!--        android:id="@+id/navigation_list_pengajuan"-->
+<!--        android:icon="@drawable/ic_event_note_black_24dp"-->
+<!--        android:title="@string/title_list_submission" />-->
+
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_settings_menu"

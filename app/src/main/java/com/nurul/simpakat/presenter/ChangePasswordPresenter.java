@@ -10,9 +10,8 @@ import com.nurul.simpakat.common.util.EncryptionUtils;
 import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.remote.ChangePasswordCreateRequest;
 import com.nurul.simpakat.model.remote.ChangePasswordResponse;
-import com.nurul.simpakat.presenter.AbstractPresenter;
-import com.nurul.simpakat.view.home.ui.pengaturan.password.ChangePasswordModel;
-import com.nurul.simpakat.view.home.ui.pengaturan.password.ChangePasswordView;
+import com.nurul.simpakat.model.simpakat.ChangePasswordModel;
+import com.nurul.simpakat.view.ChangePasswordView;
 
 import retrofit2.Call;
 import retrofit2.Callback;

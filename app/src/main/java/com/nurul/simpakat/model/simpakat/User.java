@@ -16,6 +16,14 @@ public class User {
     @SerializedName("nama")
     public String namaUser;
 
+    @Expose
+    @SerializedName("jabatan")
+    public String jabatan;
+
+    @Expose
+    @SerializedName("kode_unit_kerja")
+    public String kodeUnitKerja;
+
     public String getNip() {
         return nip;
     }
@@ -38,5 +46,21 @@ public class User {
 
     public void setNamaUser(String namaUser) {
         this.namaUser = namaUser;
+    }
+
+    public String getJabatan() {
+        return jabatan;
+    }
+
+    public void setJabatan(String jabatan) {
+        this.jabatan = jabatan;
+    }
+
+    public String getKodeUnitKerja() {
+        return kodeUnitKerja;
+    }
+
+    public void setKodeUnitKerja(String kodeUnitKerja) {
+        this.kodeUnitKerja = kodeUnitKerja;
     }
 }

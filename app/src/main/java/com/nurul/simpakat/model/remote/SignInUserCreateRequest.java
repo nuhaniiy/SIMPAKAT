@@ -15,6 +15,10 @@ public class SignInUserCreateRequest {
     @SerializedName("password")
     private String password;
 
+    @Expose
+    @SerializedName("device_token")
+    private String dToken;
+
     public String getNip() {
         return nip;
     }
@@ -29,5 +33,13 @@ public class SignInUserCreateRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getdToken() {
+        return dToken;
+    }
+
+    public void setdToken(String dToken) {
+        this.dToken = dToken;
     }
 }

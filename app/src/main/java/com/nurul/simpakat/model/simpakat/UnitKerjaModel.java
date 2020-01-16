@@ -1,4 +1,4 @@
-package com.nurul.simpakat.view.home.ui.proker;
+package com.nurul.simpakat.model.simpakat;
 
 public class UnitKerjaModel {
     private int kodeUnitKerj;

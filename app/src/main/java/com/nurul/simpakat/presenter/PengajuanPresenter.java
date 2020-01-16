@@ -10,9 +10,9 @@ import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.remote.ListDataPengajuanResponse;
 import com.nurul.simpakat.model.remote.PengajuanCreateRequest;
 import com.nurul.simpakat.model.remote.PengajuanCreateResponse;
-import com.nurul.simpakat.presenter.AbstractPresenter;
-import com.nurul.simpakat.view.home.ui.pengajuan.PengajuanModel;
-import com.nurul.simpakat.view.home.ui.pengajuan.PengajuanView;
+import com.nurul.simpakat.model.remote.RetrievePengajuanRequest;
+import com.nurul.simpakat.model.simpakat.PengajuanModel;
+import com.nurul.simpakat.view.PengajuanView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -118,8 +118,18 @@ public class PengajuanPresenter extends AbstractPresenter<PengajuanModel, Pengaj
         }
     }
 
-    public void requestDataPengajuanFromServer() {
-        callListPengajuans = getRemoteFunctions().callGetDataPengajuan();
+    public void requestDataPengajuanFromServer(String id) {
+        RetrievePengajuanRequest retrievePengajuanRequest = new RetrievePengajuanRequest();
+
+        String nip = id;
+        if(android.text.TextUtils.isEmpty(nip)) {
+            getView().displayMessage(
+                    getView().getResourceString(R.string.info),
+                    getView().getResourceString(R.string.nip_required));
+        }
+
+        retrievePengajuanRequest.setNip(nip);
+        callListPengajuans = getRemoteFunctions().callGetDataPengajuan(retrievePengajuanRequest);
 
         callListPengajuans.enqueue(new Callback<ListDataPengajuanResponse>() {
 

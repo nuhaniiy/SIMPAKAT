@@ -40,6 +40,10 @@ public class SignUpUserCreateRequest {
     @SerializedName("last_online")
     private String lastOnline;
 
+    @Expose
+    @SerializedName("device_token")
+    private String dToken;
+
     public String getNip() {
         return nip;
     }
@@ -102,5 +106,13 @@ public class SignUpUserCreateRequest {
 
     public void setLastOnline(String lastOnline) {
         this.lastOnline = lastOnline;
+    }
+
+    public String getdToken() {
+        return dToken;
+    }
+
+    public void setdToken(String dToken) {
+        this.dToken = dToken;
     }
 }

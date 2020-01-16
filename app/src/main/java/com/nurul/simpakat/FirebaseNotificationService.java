@@ -13,14 +13,22 @@ import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.util.PreferenceUtils;
 import com.nurul.simpakat.view.home.ui.pengajuan.DetailPengajuanActivity;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
+
+import static com.nurul.simpakat.common.Constanta.APPLICATION_PATH;
+import static com.nurul.simpakat.common.Constanta.APPLICATION_URL;
 
 public class FirebaseNotificationService extends FirebaseMessagingService {
 
@@ -46,6 +54,9 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
         Log.d(TAG, "Firebase Token : " + s);
         PreferenceUtils preferenceUtils = new PreferenceUtils(getApplicationContext(), Constanta.APPLICATION_PREFERENCE);
         preferenceUtils.putString(Constanta.PREF_FCM_TOKEN, s);
+        if(preferenceUtils.getString(Constanta.PREF_ID, null) != null) {
+            updateDeviceToken(s);
+        }
 //        super.onNewToken(s);
     }
 
@@ -80,6 +91,7 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
             builderNotif = new Notification.Builder(getApplicationContext(), channelId)
                     .setContentTitle(remoteMessage.getNotification().getTitle())
                     .setContentText(remoteMessage.getNotification().getBody())
+                    .setStyle(new Notification.BigTextStyle().bigText(remoteMessage.getNotification().getBody()))
                     .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                     .setSmallIcon(R.drawable.ic_event_note_notification)
                     .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.logo_apps))
@@ -96,6 +108,7 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
             builderNotif = new Notification.Builder(this)
                     .setContentTitle(remoteMessage.getNotification().getTitle())
                     .setContentText(remoteMessage.getNotification().getBody())
+                    .setStyle(new Notification.BigTextStyle().bigText(remoteMessage.getNotification().getBody()))
                     .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                     .setSmallIcon(R.drawable.ic_event_note_notification)
                     .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.logo_apps))
@@ -109,5 +122,41 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
 
             notificationManager.notify(Constanta.NOTIFY_SUBMISSION, builderNotif.build());
         }
+    }
+
+    private void updateDeviceToken(String token) {
+        PreferenceUtils preferenceUtils = new PreferenceUtils(getApplicationContext(), Constanta.APPLICATION_PREFERENCE);
+        String url = APPLICATION_URL+APPLICATION_PATH+"simpakat_update_user_device_token.php";
+        AsyncHttpClient client = new AsyncHttpClient(true,80,443);
+        client.setTimeout(60000);
+        RequestParams params = new RequestParams();
+        params.add("nip", preferenceUtils.getString(Constanta.PREF_ID, ""));
+        params.add("device_token", token);
+        params.setUseJsonStreamer(true);
+
+        client.get(url,params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+                String response = null;
+                try {
+                    response = new String(responseBody, "UTF-8");
+                    Log.d("respond","response update : " + response);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+                String response;
+                try {
+                    response = new String(responseBody, "UTF-8");
+                    Log.d("error",response);
+                    //Toast.makeText(EditBusinessUnitWizardActivity.this,"Cannot Connect to server",Toast.LENGTH_LONG).show();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

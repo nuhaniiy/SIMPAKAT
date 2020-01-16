@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.home.ui.pengajuan.DetailPengajuanActivity"></activity>
+        <activity android:name=".view.dekan.proker.AddProkerDekanActivity"></activity>
+        <activity android:name=".view.dekan.HomeDekanActivity" />
+        <activity android:name=".view.home.ui.pengajuan.DetailPengajuanActivity" />
         <activity
             android:name=".view.home.ui.pengaturan.password.ChangePasswordActivity"
             android:label="Change Password" />

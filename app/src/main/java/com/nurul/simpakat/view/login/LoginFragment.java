@@ -18,12 +18,16 @@ import android.view.ViewGroup;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.nurul.simpakat.AbstractFragmentView;
 import com.nurul.simpakat.R;
 import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
 import com.nurul.simpakat.common.util.PreferenceUtils;
+import com.nurul.simpakat.model.simpakat.LoginModel;
 import com.nurul.simpakat.presenter.LoginPresenter;
+import com.nurul.simpakat.view.LoginView;
+import com.nurul.simpakat.view.dekan.HomeDekanActivity;
 import com.nurul.simpakat.view.home.HomeActivity;
 import com.nurul.simpakat.view.login.changePassword.ForgetPasswordActivity;
 import com.nurul.simpakat.view.login.signup.SignupUserActivity;
@@ -84,9 +88,10 @@ public class LoginFragment extends AbstractFragmentView<LoginModel> implements L
 
         String id = getAppPreference().getString(Constanta.PREF_ID, "");
         String email = getAppPreference().getString(Constanta.PREF_EMAIL, "'");
+        String jabatan = getAppPreference().getString(Constanta.PREF_JABATAN, "'");
 
         if (!TextUtils.isEmpty(id) && !TextUtils.isEmpty(email)) {
-            showMasterPage();
+            showMasterPage(jabatan);
         }
     }
 
@@ -156,8 +161,16 @@ public class LoginFragment extends AbstractFragmentView<LoginModel> implements L
 
 
         if(doNext) {
+            String dToken;
+            Log.d("TOKEN", "isi token : " + FirebaseInstanceId.getInstance().getToken());
+            if(getAppPreference().getString(Constanta.PREF_FCM_TOKEN, null) != null) {
+                dToken = getAppPreference().getString(Constanta.PREF_FCM_TOKEN, "");
+            } else {
+                dToken = FirebaseInstanceId.getInstance().getToken();
+            }
             super.viewModel.setNip(nip.getText().toString());
             super.viewModel.setPassword(password.getText().toString());
+            super.viewModel.setdToken(dToken);
 
             loginPresenter.signInWithEmail();
         }
@@ -249,6 +262,8 @@ public class LoginFragment extends AbstractFragmentView<LoginModel> implements L
         String id = String.valueOf(viewModel.getNip());
         String email = viewModel.getEmail();
         String nama = viewModel.getName();
+        String jabatan = viewModel.getJabatan();
+        String kodeUnitKerja = viewModel.getKodeUnitKerja();
 
 
         Log.e("user_id",id);
@@ -256,8 +271,10 @@ public class LoginFragment extends AbstractFragmentView<LoginModel> implements L
         getAppPreference().putString(Constanta.PREF_ID, id);
         getAppPreference().putString(Constanta.PREF_EMAIL, email);
         getAppPreference().putString(Constanta.PREF_NAME, nama);
+        getAppPreference().putString(Constanta.PREF_JABATAN, jabatan);
+        getAppPreference().putString(Constanta.PREF_KODE_UNIT_KERJA, kodeUnitKerja);
 
-        showMasterPage();
+        showMasterPage(jabatan);
     }
 
     @Override
@@ -270,9 +287,20 @@ public class LoginFragment extends AbstractFragmentView<LoginModel> implements L
         return false;
     }
 
-    private void showMasterPage() {
-        Intent intent = new Intent(getActivity(), HomeActivity.class);
-        startActivity(intent);
-        getActivity().finish();
+    private void showMasterPage(String jabatan) {
+        Log.d("LOGIN", "jabatan " + jabatan);
+        if (jabatan.equals("Unit Kerja")) {
+            Intent intent = new Intent(getActivity(), HomeActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        } else if (jabatan.equals("Dekan")) {
+            Intent intent = new Intent(getActivity(), HomeDekanActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        } else if (jabatan.equals("Wakil Rektor") || jabatan.equals("Rektor")) {
+
+        } else {
+
+        }
     }
 }

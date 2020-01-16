@@ -1,7 +1,8 @@
-package com.nurul.simpakat.view.home.ui.pengajuan;
+package com.nurul.simpakat.view;
 
 import com.nurul.simpakat.BaseView;
 import com.nurul.simpakat.model.simpakat.ListPengajuan;
+import com.nurul.simpakat.model.simpakat.PengajuanModel;
 
 import java.util.ArrayList;
 

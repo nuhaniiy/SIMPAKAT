@@ -10,6 +10,8 @@ import com.nurul.simpakat.model.remote.PengajuanCreateRequest;
 import com.nurul.simpakat.model.remote.PengajuanCreateResponse;
 import com.nurul.simpakat.model.remote.ProkerCreateRequest;
 import com.nurul.simpakat.model.remote.ProkerCreateResponse;
+import com.nurul.simpakat.model.remote.RetrievePengajuanRequest;
+import com.nurul.simpakat.model.remote.RetrieveProkerRequest;
 import com.nurul.simpakat.model.remote.SignInUserCreateRequest;
 import com.nurul.simpakat.model.remote.SignInUserCreateResponse;
 import com.nurul.simpakat.model.remote.SignUpUserCreateRequest;
@@ -33,15 +35,17 @@ public interface RemoteFunctions {
     Call<ProkerCreateResponse> callProkerCreate(
             @Body ProkerCreateRequest request);
 
-    @GET("simpakat_get_data_proker.php")
-    Call<ListDatProkerResponse> callGetDataProker();
+    @POST("simpakat_get_data_proker.php")
+    Call<ListDatProkerResponse> callGetDataProker(
+            @Body RetrieveProkerRequest request);
 
     @POST("simpakat_add_pengajuan_proker.php")
     Call<PengajuanCreateResponse> callPengajuanProkerCreate(
             @Body PengajuanCreateRequest request);
 
-    @GET("simpakat_get_data_pengajuan.php")
-    Call<ListDataPengajuanResponse> callGetDataPengajuan();
+    @POST("simpakat_get_data_pengajuan.php")
+    Call<ListDataPengajuanResponse> callGetDataPengajuan(
+            @Body RetrievePengajuanRequest request);
 
     @POST("simpakat_check_email_user.php")
     Call<ForgetPasswordResponse> callForgetPassword(

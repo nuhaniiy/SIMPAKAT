@@ -10,9 +10,8 @@ import com.nurul.simpakat.common.util.EncryptionUtils;
 import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.remote.SignUpUserCreateRequest;
 import com.nurul.simpakat.model.remote.SignUpUserCreateResponse;
-import com.nurul.simpakat.presenter.AbstractPresenter;
-import com.nurul.simpakat.view.login.signup.SignupModel;
-import com.nurul.simpakat.view.login.signup.SignupView;
+import com.nurul.simpakat.model.simpakat.SignupModel;
+import com.nurul.simpakat.view.SignupView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,6 +48,7 @@ public class SignupPresenter extends AbstractPresenter<SignupModel, SignupView, 
         String jabatan = super.viewModel.getJabatan();
         String password = EncryptionUtils.getSHA256(super.viewModel.getPassword());
         String confirmPassword = EncryptionUtils.getSHA256(super.viewModel.getConfirmPassword());
+        String dToken = super.viewModel.getdToken();
 
         if (android.text.TextUtils.isEmpty(email)) {
             getView().displayMessage(
@@ -71,6 +71,7 @@ public class SignupPresenter extends AbstractPresenter<SignupModel, SignupView, 
             signUpUserCreateRequest.setNamaUser(name);
             signUpUserCreateRequest.setJabatan(jabatan);
             signUpUserCreateRequest.setStatus("Inactive");
+            signUpUserCreateRequest.setdToken(dToken);
 
             callSignUpUserCreateByEmail = getRemoteFunctions().callSignUpUserCreateByEmail(signUpUserCreateRequest);
 

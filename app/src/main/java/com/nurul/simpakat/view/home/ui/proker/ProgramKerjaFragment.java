@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +21,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nurul.simpakat.AbstractFragmentView;
 import com.nurul.simpakat.R;
+import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
+import com.nurul.simpakat.common.util.PreferenceUtils;
+import com.nurul.simpakat.model.simpakat.ProkerModel;
 import com.nurul.simpakat.presenter.ProkerPresenter;
+import com.nurul.simpakat.view.ProkerView;
 import com.nurul.simpakat.view.home.adapter.ListProkerAdapter;
 import com.nurul.simpakat.model.simpakat.ListProker;
 import com.wang.avi.AVLoadingIndicatorView;
@@ -65,6 +70,8 @@ public class ProgramKerjaFragment extends AbstractFragmentView<ProkerModel> impl
 
         ButterKnife.bind(this, root);
 
+        setAppPreference(new PreferenceUtils(getActivity(), Constanta.APPLICATION_PREFERENCE));
+
         fabAddData.setOnClickListener(view -> {
             startActivity(new Intent(getActivity(), AddProgramKerjaActivity.class));
         });
@@ -73,6 +80,7 @@ public class ProgramKerjaFragment extends AbstractFragmentView<ProkerModel> impl
         prokerPresenter = new ProkerPresenter();
         prokerPresenter.init(super.viewModel, this, new ApiProvider());
 
+        Log.d("JAB", "jabatan : " + getAppPreference().getString(Constanta.PREF_JABATAN, ""));
         return root;
     }
 
@@ -80,7 +88,7 @@ public class ProgramKerjaFragment extends AbstractFragmentView<ProkerModel> impl
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        prokerPresenter.requestDataProkerFromServer();
+        prokerPresenter.requestDataProkerFromServer(getAppPreference().getString(Constanta.PREF_JABATAN, ""));
     }
 
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -90,7 +98,7 @@ public class ProgramKerjaFragment extends AbstractFragmentView<ProkerModel> impl
 //            String topic = intent.getAction();
             String from = intent.getStringExtra("from");
             if(from.equals("added")) {
-                prokerPresenter.requestDataProkerFromServer();
+                prokerPresenter.requestDataProkerFromServer(getAppPreference().getString(Constanta.PREF_JABATAN, ""));
             }
         }
     };

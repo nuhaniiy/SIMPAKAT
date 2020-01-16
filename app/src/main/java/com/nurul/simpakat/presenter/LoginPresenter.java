@@ -10,9 +10,8 @@ import com.nurul.simpakat.common.util.EncryptionUtils;
 import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.remote.SignInUserCreateRequest;
 import com.nurul.simpakat.model.remote.SignInUserCreateResponse;
-import com.nurul.simpakat.presenter.AbstractPresenter;
-import com.nurul.simpakat.view.login.LoginModel;
-import com.nurul.simpakat.view.login.LoginView;
+import com.nurul.simpakat.model.simpakat.LoginModel;
+import com.nurul.simpakat.view.LoginView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,6 +51,7 @@ public class LoginPresenter extends AbstractPresenter<LoginModel, LoginView, Api
             SignInUserCreateRequest signInUserCreateRequest = new SignInUserCreateRequest();
             signInUserCreateRequest.setNip(getViewModel().getNip());
             signInUserCreateRequest.setPassword(EncryptionUtils.getSHA256(getViewModel().getPassword()));
+            signInUserCreateRequest.setdToken(getViewModel().getdToken());
             callSignInUserCreateByEmail =
                     getRemoteFunctions().callSignInUserCreateByEmail(signInUserCreateRequest);
 
@@ -63,11 +63,13 @@ public class LoginPresenter extends AbstractPresenter<LoginModel, LoginView, Api
                     String message;
 
                     responseData = response.body();
-                    Log.e("RESPONSE", "response " + responseData);
+                    Log.d("RESPONSE", "response " + responseData);
                     if(TextUtils.equalIgnoreCase(responseData.getResultCode(), Constanta.OK)) {
                         getViewModel().setNip(responseData.getData().getNip());
                         getViewModel().setEmail(responseData.getData().getEmail());
                         getViewModel().setName(responseData.getData().getNamaUser());
+                        getViewModel().setJabatan(responseData.getData().getJabatan());
+                        getViewModel().setKodeUnitKerja(responseData.getData().getKodeUnitKerja());
                         getViewModel().setUser(responseData.getData());
 
                         getView().hideLoadIndicator();

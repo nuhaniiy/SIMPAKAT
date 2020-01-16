@@ -1,4 +1,4 @@
-package com.nurul.simpakat.view.home.ui.pengajuan;
+package com.nurul.simpakat.model.simpakat;
 
 public class PengajuanModel {
     private String idProker;

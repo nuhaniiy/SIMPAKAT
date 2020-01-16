@@ -9,9 +9,8 @@ import com.nurul.simpakat.common.util.ApiUtil;
 import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.remote.ForgetPasswordCreateRequest;
 import com.nurul.simpakat.model.remote.ForgetPasswordResponse;
-import com.nurul.simpakat.presenter.AbstractPresenter;
-import com.nurul.simpakat.view.login.changePassword.ForgetPasswordModel;
-import com.nurul.simpakat.view.login.changePassword.ForgetPasswordView;
+import com.nurul.simpakat.model.simpakat.ForgetPasswordModel;
+import com.nurul.simpakat.view.ForgetPasswordView;
 
 import retrofit2.Call;
 import retrofit2.Callback;

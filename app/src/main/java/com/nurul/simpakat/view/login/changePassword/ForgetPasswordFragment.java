@@ -19,7 +19,9 @@ import com.nurul.simpakat.R;
 import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
 import com.nurul.simpakat.common.util.PreferenceUtils;
+import com.nurul.simpakat.model.simpakat.ForgetPasswordModel;
 import com.nurul.simpakat.presenter.ForgetPasswordPresenter;
+import com.nurul.simpakat.view.ForgetPasswordView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

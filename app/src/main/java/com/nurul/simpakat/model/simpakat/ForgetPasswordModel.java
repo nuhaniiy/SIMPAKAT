@@ -1,4 +1,4 @@
-package com.nurul.simpakat.view.login.changePassword;
+package com.nurul.simpakat.model.simpakat;
 
 import lombok.Data;
 
