@@ -16,9 +16,11 @@ import java.util.ArrayList;
 public class ListPengajuanAdapter extends RecyclerView.Adapter<ListPengajuanAdapter.ListPengajuanViewHolder> {
 
     private ArrayList<ListPengajuan> dataList;
+    private ListPengajuanClicked clickListener;
 
-    public ListPengajuanAdapter(ArrayList<ListPengajuan> dataList) {
+    public ListPengajuanAdapter(ArrayList<ListPengajuan> dataList, ListPengajuanClicked clickListener) {
         this.dataList = dataList;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -35,6 +37,7 @@ public class ListPengajuanAdapter extends RecyclerView.Adapter<ListPengajuanAdap
         holder.statusPengajuan.setText(dataList.get(position).getStatusPengajuan());
 
         holder.itemView.setOnClickListener(view -> {
+            clickListener.ListPengajuanClicked(dataList.get(position));
 //            recyclerItemClickListener.onItemClick(dataList.get(position));
         });
     }
@@ -54,5 +57,9 @@ public class ListPengajuanAdapter extends RecyclerView.Adapter<ListPengajuanAdap
             statusPengajuan =  itemView.findViewById(R.id.status);
 
         }
+    }
+
+    public interface ListPengajuanClicked{
+        void ListPengajuanClicked(ListPengajuan list);
     }
 }

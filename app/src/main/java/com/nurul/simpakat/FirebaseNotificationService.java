@@ -22,7 +22,9 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.util.PreferenceUtils;
+import com.nurul.simpakat.view.dekan.HomeDekanActivity;
 import com.nurul.simpakat.view.home.ui.pengajuan.DetailPengajuanActivity;
+import com.nurul.simpakat.view.warek.HomeWarekActivity;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
@@ -61,13 +63,25 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
     }
 
     private void handleMessage(RemoteMessage remoteMessage) {
+        PreferenceUtils preferenceUtils = new PreferenceUtils(getApplicationContext(), Constanta.APPLICATION_PREFERENCE);
         String channelId = "com.nurul.simpakat.notif";
         String descriptions = "Simpakat Notif Pengajuan";
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationChannel notificationChannel;
         Notification.Builder builderNotif;
 
-        Intent intent = new Intent(getApplicationContext(), DetailPengajuanActivity.class);
+        String jabatan = preferenceUtils.getString(Constanta.PREF_JABATAN, "");
+        Intent intent = null;
+        if (jabatan.equals("Unit Kerja")) {
+            intent = new Intent(getApplicationContext(), DetailPengajuanActivity.class);
+        } else if (jabatan.equals("Dekan")) {
+            intent = new Intent(getApplicationContext(), HomeDekanActivity.class);
+        } else if (jabatan.equals("Wakil Rektor 1")) {
+            intent = new Intent(getApplicationContext(), HomeWarekActivity.class);
+        } else if (jabatan.equals("Wakil Rektor 2")) {
+            intent = new Intent(getApplicationContext(), HomeWarekActivity.class);
+        }
+
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.putExtra("channelId", channelId);

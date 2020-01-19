@@ -9,6 +9,10 @@ import lombok.Data;
 public class PengajuanCreateRequest {
 
     @Expose
+    @SerializedName("NIP")
+    private String nip;
+
+    @Expose
     @SerializedName("id_proker")
     private String idProker;
 
@@ -63,6 +67,14 @@ public class PengajuanCreateRequest {
     @Expose
     @SerializedName("status_pengajuan")
     private String statusPengajuan;
+
+    public String getNip() {
+        return nip;
+    }
+
+    public void setNip(String nip) {
+        this.nip = nip;
+    }
 
     public String getIdProker() {
         return idProker;

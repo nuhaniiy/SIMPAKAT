@@ -51,6 +51,7 @@ public class ProkerPresenter extends AbstractPresenter<ProkerModel, ProkerView, 
         String jenisPembiayaan = super.viewModel.getJenisPembiayaan();
         String biaya = super.viewModel.getBiaya();
         String bulanKegiatan = super.viewModel.getBulanKegiatan();
+        String jabatan = super.viewModel.getJabatan();
 
         if (android.text.TextUtils.isEmpty(programKerja)) {
             getView().displayMessage(
@@ -71,6 +72,7 @@ public class ProkerPresenter extends AbstractPresenter<ProkerModel, ProkerView, 
             prokerCreateRequest.setBulanKegiatan(bulanKegiatan);
             prokerCreateRequest.setBiaya(biaya);
             prokerCreateRequest.setStatusProker("Belum Diajukan");
+            prokerCreateRequest.setJabatan(jabatan);
 
             callProkerCreate = getRemoteFunctions().callProkerCreate(prokerCreateRequest);
 

@@ -1,6 +1,7 @@
 package com.nurul.simpakat.model.simpakat;
 
 public class ProkerModel {
+    private String nip;
     private String unitKerja;
     private String programKerja;
     private String keterangan;
@@ -9,6 +10,14 @@ public class ProkerModel {
     private String biaya;
     private String bulanKegiatan;
     private String jabatan;
+
+    public String getNip() {
+        return nip;
+    }
+
+    public void setNip(String nip) {
+        this.nip = nip;
+    }
 
     public String getUnitKerja() {
         return unitKerja;

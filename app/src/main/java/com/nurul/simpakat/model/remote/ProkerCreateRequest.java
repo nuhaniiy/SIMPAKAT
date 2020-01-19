@@ -44,6 +44,10 @@ public class ProkerCreateRequest {
     @SerializedName("status_proker")
     private String statusProker;
 
+    @Expose
+    @SerializedName("jabatan")
+    private String jabatan;
+
     public String getIdUser() {
         return idUser;
     }
@@ -114,5 +118,13 @@ public class ProkerCreateRequest {
 
     public void setStatusProker(String statusProker) {
         this.statusProker = statusProker;
+    }
+
+    public String getJabatan() {
+        return jabatan;
+    }
+
+    public void setJabatan(String jabatan) {
+        this.jabatan = jabatan;
     }
 }

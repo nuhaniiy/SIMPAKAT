@@ -98,6 +98,7 @@ public class AddPengajuanFragment extends AbstractFragmentView<PengajuanModel> i
     protected RelativeLayout layoutSuccessAdd;
 
     private String[] listProker;
+    private String[] kodeProker;
     private JSONArray jsonArray;
 
     public AddPengajuanFragment() {
@@ -137,14 +138,29 @@ public class AddPengajuanFragment extends AbstractFragmentView<PengajuanModel> i
 
             @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
                 try {
-                    if(position == 0) {
-                        biaya.setText("");
-                    } else {
-                        JSONObject jsonObject = jsonArray.getJSONObject(position);
-                        biaya.setText(jsonObject.getString("biaya"));
+//                    if(position == 0) {
+//                        biaya.setText("");
+//                    } else {
+//                        int indeks = 0;
+//                        for (int i = 0; i < jsonArray.length(); i++) {
+//                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+//                            if(item.equals(jsonObject.getString("nama_proker"))) {
+//                                biaya.setText(jsonObject.getString("biaya"));
+//                            }
+//                        }
+//                    }
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        if(item.equals(jsonObject.getString("nama_proker"))) {
+                            biaya.setText(jsonObject.getString("biaya"));
+                            break;
+                        } else {
+                            biaya.setText("0");
+                        }
                     }
                 } catch (JSONException ex) {
-
+                    Log.e("PengajuanDekan", "err : " + ex.getMessage());
                 }
             }
         });
@@ -247,10 +263,13 @@ public class AddPengajuanFragment extends AbstractFragmentView<PengajuanModel> i
                             jsonArray = new JSONArray(json.getString("data_proker"));
                             if(jsonArray.length() > 0) {
                                 listProker = new String[jsonArray.length()+1];
+                                kodeProker = new String[jsonArray.length()+1];
                                 listProker[0] = "-- Pilih --";
+                                kodeProker[0] = "0";
                                 for(int i = 0; i < jsonArray.length(); i++) {
                                     jsonData = jsonArray.getJSONObject(i);
-                                    listProker[i+1] = jsonData.getString("id_proker")+" - "+jsonData.getString("nama_proker");
+                                    kodeProker[i+1] = jsonData.getString("id_proker");
+                                    listProker[i+1] = jsonData.getString("nama_proker");
                                 }
                                 programKerja.setItems(listProker);
                             }
@@ -551,8 +570,10 @@ public class AddPengajuanFragment extends AbstractFragmentView<PengajuanModel> i
         }
 
         if(doNext) {
-            String[] idProgramKerja = programKerja.getText().toString().replace(" ","").split("-");
-            super.viewModel.setIdProker(idProgramKerja[0]);
+            //            String[] idProgramKerja = programKerja.getText().toString().replace(" ","").split("-");
+            int idProgramKerja = programKerja.getSelectedIndex();
+//            super.viewModel.setIdProker(idProgramKerja[0]);
+            super.viewModel.setIdProker(kodeProker[idProgramKerja]);
             super.viewModel.setBiaya(biaya.getText().toString());
             super.viewModel.setBiayaTerpakai(biayaTerpakai.getText().toString());
             super.viewModel.setSisaBiaya(sisaBiaya.getText().toString());
@@ -566,6 +587,7 @@ public class AddPengajuanFragment extends AbstractFragmentView<PengajuanModel> i
             super.viewModel.setPersetujuanWarek2("");
             super.viewModel.setPersetujuanRektor("");
             super.viewModel.setStatusPengajuan("Proses Diajukan");
+            super.viewModel.setNip(getAppPreference().getString(Constanta.PREF_ID, ""));
 
             pengajuanPresenter.insertPengajuan();
             sendNotification(getAppPreference().getString(Constanta.PREF_KODE_UNIT_KERJA, ""),

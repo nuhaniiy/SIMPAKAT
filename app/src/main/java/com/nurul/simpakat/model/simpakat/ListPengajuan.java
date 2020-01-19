@@ -10,6 +10,14 @@ public class ListPengajuan {
     private String idPengajuan;
 
     @Expose
+    @SerializedName("NIP")
+    private String nip;
+
+    @Expose
+    @SerializedName("nama")
+    private String namaKaryawan;
+
+    @Expose
     @SerializedName("id_proker")
     private String idProker;
 
@@ -75,6 +83,22 @@ public class ListPengajuan {
 
     public void setIdPengajuan(String idPengajuan) {
         this.idPengajuan = idPengajuan;
+    }
+
+    public String getNip() {
+        return nip;
+    }
+
+    public void setNip(String nip) {
+        this.nip = nip;
+    }
+
+    public String getNamaKaryawan() {
+        return namaKaryawan;
+    }
+
+    public void setNamaKaryawan(String namaKaryawan) {
+        this.namaKaryawan = namaKaryawan;
     }
 
     public String getIdProker() {

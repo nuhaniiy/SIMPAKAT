@@ -1,6 +1,7 @@
 package com.nurul.simpakat.model.simpakat;
 
 public class PengajuanModel {
+    private String nip;
     private String idProker;
     private String biaya;
     private String biayaTerpakai;
@@ -15,6 +16,14 @@ public class PengajuanModel {
     private String persetujuanWarek2;
     private String persetujuanRektor;
     private String statusPengajuan;
+
+    public String getNip() {
+        return nip;
+    }
+
+    public void setNip(String nip) {
+        this.nip = nip;
+    }
 
     public String getIdProker() {
         return idProker;

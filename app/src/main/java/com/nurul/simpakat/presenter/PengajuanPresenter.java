@@ -43,6 +43,7 @@ public class PengajuanPresenter extends AbstractPresenter<PengajuanModel, Pengaj
     public void insertPengajuan() {
         PengajuanCreateRequest pengajuanCreateRequest = new PengajuanCreateRequest();
 
+        String nip = super.viewModel.getNip();
         String idProker = super.viewModel.getIdProker();
         String biaya = super.viewModel.getBiaya();
         String biayaTerpakai = super.viewModel.getBiayaTerpakai();
@@ -72,6 +73,7 @@ public class PengajuanPresenter extends AbstractPresenter<PengajuanModel, Pengaj
                     getView().getResourceString(R.string.biaya_diajukan_required));
         } else {
             super.view.displayLoadIndicator();
+            pengajuanCreateRequest.setNip(nip);
             pengajuanCreateRequest.setIdProker(idProker);
             pengajuanCreateRequest.setBiaya(biaya);
             pengajuanCreateRequest.setBiayaTerpakai(biayaTerpakai);
@@ -160,7 +162,7 @@ public class PengajuanPresenter extends AbstractPresenter<PengajuanModel, Pengaj
 
             @Override
             public void onFailure(Call<ListDataPengajuanResponse> call, Throwable t) {
-                Log.e("ERROR", "error add proker : " + t.getMessage());
+                Log.e("ERROR", "error get pengajuan : " + t.getMessage());
                 getView().hideLoadIndicator();
             }
         });

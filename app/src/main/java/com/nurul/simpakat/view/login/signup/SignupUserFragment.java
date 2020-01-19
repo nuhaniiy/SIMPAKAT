@@ -25,6 +25,7 @@ import com.nurul.simpakat.AbstractFragmentView;
 import com.nurul.simpakat.R;
 import com.nurul.simpakat.common.Constanta;
 import com.nurul.simpakat.common.provider.api.ApiProvider;
+import com.nurul.simpakat.common.util.PreferenceUtils;
 import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.simpakat.SignupModel;
 import com.nurul.simpakat.presenter.SignupPresenter;
@@ -103,6 +104,8 @@ public class SignupUserFragment extends AbstractFragmentView<SignupModel> implem
                 new ApiProvider());
 
         ButterKnife.bind(this, root);
+
+        setAppPreference(new PreferenceUtils(getActivity(), Constanta.APPLICATION_PREFERENCE));
 
         setOnFocusEditText();
 
@@ -412,10 +415,15 @@ public class SignupUserFragment extends AbstractFragmentView<SignupModel> implem
             doNext = false;
         }
 
-        if(spinnerUnitKerja.getSelectedIndex() == 0) {
-            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.unit_kerja_required),
-                    Toast.LENGTH_LONG).show();
-            doNext = false;
+        if(spinnerJabatan.getText().toString().equals("Wakil Rektor 1") || spinnerJabatan.getText().toString().equals("Wakil Rektor 2")
+        || spinnerJabatan.getText().toString().equals("Rektor")) {
+
+        } else {
+            if (spinnerUnitKerja.getSelectedIndex() == 0) {
+                Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.unit_kerja_required),
+                        Toast.LENGTH_LONG).show();
+                doNext = false;
+            }
         }
 
         if(doNext) {

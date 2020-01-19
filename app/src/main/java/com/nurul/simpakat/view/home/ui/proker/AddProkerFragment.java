@@ -250,6 +250,7 @@ public class AddProkerFragment extends AbstractFragmentView<ProkerModel> impleme
             super.viewModel.setJenisPembiayaan(spinnerPembiayaan.getText().toString());
             super.viewModel.setBiaya(biaya.getText().toString());
             super.viewModel.setBulanKegiatan(bulanKegiatanSpinner.getText().toString());
+            super.viewModel.setJabatan(getAppPreference().getString(Constanta.PREF_JABATAN, ""));
 
             prokerPresenter.insertProker(getAppPreference().getString(PREF_ID, ""));
         }

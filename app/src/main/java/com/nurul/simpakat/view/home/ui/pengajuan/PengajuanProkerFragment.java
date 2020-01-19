@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PengajuanProkerFragment extends AbstractFragmentView<PengajuanModel> implements PengajuanView {
+public class PengajuanProkerFragment extends AbstractFragmentView<PengajuanModel> implements PengajuanView, ListPengajuanAdapter.ListPengajuanClicked {
 
     @BindView(R.id.fab_add_pengajuan_program_kerja)
     FloatingActionButton fabAddSubmission;
@@ -138,9 +138,14 @@ public class PengajuanProkerFragment extends AbstractFragmentView<PengajuanModel
     }
 
     public void setDataToRecyclerView(ArrayList<ListPengajuan> listPengajuanArrayList) {
-        ListPengajuanAdapter adapter = new ListPengajuanAdapter(listPengajuanArrayList);
+        ListPengajuanAdapter adapter = new ListPengajuanAdapter(listPengajuanArrayList, this);
         rvDataPengajuan.setLayoutManager(new LinearLayoutManager(getContext()));
         rvDataPengajuan.setItemAnimator(new DefaultItemAnimator());
         rvDataPengajuan.setAdapter(adapter);
+    }
+
+    @Override
+    public void ListPengajuanClicked(ListPengajuan list) {
+
     }
 }
