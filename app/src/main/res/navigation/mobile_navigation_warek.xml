@@ -12,20 +12,20 @@
         tools:layout="@layout/fragment_list_data_pengajuan" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.nurul.simpakat.view.dekan.pengajuan.PengajuanProkerDekanFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_pengajuan_proker" />
+        android:id="@+id/navigation_list_employee"
+        android:name="com.nurul.simpakat.view.warek.karyawan.DataKaryawanFragment"
+        android:label="@string/title_employee"
+        tools:layout="@layout/fragment_data_karyawan" />
 
     <fragment
-        android:id="@+id/navigation_list_pengajuan"
-        android:name="com.nurul.simpakat.view.dekan.listpengajuan.ListPengajuanFragment"
-        android:label="@string/title_list_submission"
-        tools:layout="@layout/fragment_list_pengajuan" />
+        android:id="@+id/navigation_list_unit_kerja"
+        android:name="com.nurul.simpakat.view.warek.jurusan.UnitKerjaFragment"
+        android:label="@string/title_unitkerja"
+        tools:layout="@layout/fragment_unit_kerja" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.nurul.simpakat.view.dekan.pengaturan.PengaturanDekanFragment"
+        android:id="@+id/navigation_settings"
+        android:name="com.nurul.simpakat.view.warek.settings.PengaturanPimpinanFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_pengaturan_pimpinan" />
 </navigation>

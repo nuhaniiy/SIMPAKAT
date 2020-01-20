@@ -29,6 +29,7 @@ import com.nurul.simpakat.presenter.LoginPresenter;
 import com.nurul.simpakat.view.LoginView;
 import com.nurul.simpakat.view.dekan.HomeDekanActivity;
 import com.nurul.simpakat.view.home.HomeActivity;
+import com.nurul.simpakat.view.keuangan.HomeKeuanganActivity;
 import com.nurul.simpakat.view.login.changePassword.ForgetPasswordActivity;
 import com.nurul.simpakat.view.login.signup.SignupUserActivity;
 import com.nurul.simpakat.view.warek.HomeWarekActivity;
@@ -298,13 +299,15 @@ public class LoginFragment extends AbstractFragmentView<LoginModel> implements L
             Intent intent = new Intent(getActivity(), HomeDekanActivity.class);
             startActivity(intent);
             getActivity().finish();
-        } else if (jabatan.equals("Wakil Rektor 1") || jabatan.equals("Wakil Rektor 1")
+        } else if (jabatan.equals("Wakil Rektor 1") || jabatan.equals("Wakil Rektor 2")
         || jabatan.equals("Rektor")) {
             Intent intent = new Intent(getActivity(), HomeWarekActivity.class);
             startActivity(intent);
             getActivity().finish();
         } else {
-
+            Intent intent = new Intent(getActivity(), HomeKeuanganActivity.class);
+            startActivity(intent);
+            getActivity().finish();
         }
     }
 }

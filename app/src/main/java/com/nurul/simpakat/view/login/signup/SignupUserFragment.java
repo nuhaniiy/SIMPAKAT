@@ -416,7 +416,7 @@ public class SignupUserFragment extends AbstractFragmentView<SignupModel> implem
         }
 
         if(spinnerJabatan.getText().toString().equals("Wakil Rektor 1") || spinnerJabatan.getText().toString().equals("Wakil Rektor 2")
-        || spinnerJabatan.getText().toString().equals("Rektor")) {
+        || spinnerJabatan.getText().toString().equals("Rektor") || spinnerJabatan.getText().toString().equals("Keuangan")) {
 
         } else {
             if (spinnerUnitKerja.getSelectedIndex() == 0) {

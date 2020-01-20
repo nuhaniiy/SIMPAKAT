@@ -2,11 +2,20 @@ package com.nurul.simpakat.common.provider.api;
 
 import com.nurul.simpakat.model.remote.ChangePasswordCreateRequest;
 import com.nurul.simpakat.model.remote.ChangePasswordResponse;
+import com.nurul.simpakat.model.remote.CoaCreateRequest;
+import com.nurul.simpakat.model.remote.CoaCreateResponse;
 import com.nurul.simpakat.model.remote.DataListPengajuanResponse;
 import com.nurul.simpakat.model.remote.ForgetPasswordCreateRequest;
 import com.nurul.simpakat.model.remote.ForgetPasswordResponse;
+import com.nurul.simpakat.model.remote.KegiatanCreateRequest;
+import com.nurul.simpakat.model.remote.KegiatanCreateResponse;
 import com.nurul.simpakat.model.remote.ListDatProkerResponse;
+import com.nurul.simpakat.model.remote.ListDataCoaResponse;
+import com.nurul.simpakat.model.remote.ListDataEmployeeResponse;
 import com.nurul.simpakat.model.remote.ListDataPengajuanResponse;
+import com.nurul.simpakat.model.remote.ListDataUnitKerjaResponse;
+import com.nurul.simpakat.model.remote.ListKegiatanCreateRequest;
+import com.nurul.simpakat.model.remote.ListKegiatanResponse;
 import com.nurul.simpakat.model.remote.ListPengajuanCreateRequest;
 import com.nurul.simpakat.model.remote.PengajuanCreateRequest;
 import com.nurul.simpakat.model.remote.PengajuanCreateResponse;
@@ -60,4 +69,25 @@ public interface RemoteFunctions {
     @POST("simpakat_user_change_password.php")
     Call<ChangePasswordResponse> callChangePassword(
             @Body ChangePasswordCreateRequest request);
+
+    @GET("simpakat_get_data_karyawan.php")
+    Call<ListDataEmployeeResponse> callGetDataKaryawan();
+
+    @GET("simpakat_get_data_unitkerja.php")
+    Call<ListDataUnitKerjaResponse> callGetDataUnitKerja();
+
+    @GET("simpakat_get_list_data_coa.php")
+    Call<ListDataCoaResponse> callGetDataCoa();
+
+    @POST("simpakat_add_coa.php")
+    Call<CoaCreateResponse> callAddCoa(
+            @Body CoaCreateRequest request);
+
+    @POST("simpakat_add_kegiatan.php")
+    Call<KegiatanCreateResponse> callKegiatanCreate(
+            @Body KegiatanCreateRequest request);
+
+    @POST("simpakat_get_list_data_kegiatan.php")
+    Call<ListKegiatanResponse> callGetDataKegiatan(
+            @Body ListKegiatanCreateRequest request);
 }

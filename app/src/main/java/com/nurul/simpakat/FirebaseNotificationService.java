@@ -80,6 +80,8 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
             intent = new Intent(getApplicationContext(), HomeWarekActivity.class);
         } else if (jabatan.equals("Wakil Rektor 2")) {
             intent = new Intent(getApplicationContext(), HomeWarekActivity.class);
+        } else if (jabatan.equals("Rektor")) {
+            intent = new Intent(getApplicationContext(), HomeWarekActivity.class);
         }
 
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -16,7 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.warek.HomeWarekActivity"></activity>
+        <activity android:name=".view.laporan.LaporanAnggaranActivity"></activity>
+        <activity
+            android:name=".view.home.ui.kegiatan.AddKegiatanActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".view.keuangan.coa.AddCoaActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".view.keuangan.HomeKeuanganActivity" />
+        <activity android:name=".view.warek.HomeWarekActivity" />
         <activity
             android:name=".view.dekan.pengajuan.AddPengajuanDekanActivity"
             android:theme="@style/AppTheme.NoActionBar"

@@ -22,7 +22,7 @@ public class HomeWarekActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_list_pengajuan, R.id.navigation_notifications)
+                R.id.navigation_home, R.id.navigation_list_employee, R.id.navigation_list_unit_kerja, R.id.navigation_settings)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.warek_container);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

@@ -4,6 +4,10 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Program Kerja</string>
     <string name="title_dashboard">Pengajuan</string>
+    <string name="title_employee">Karyawan</string>
+    <string name="title_kegiatan">Kegiatan</string>
+    <string name="title_coa">Data COA</string>
+    <string name="title_unitkerja">Unit Kerja</string>
     <string name="title_list_submission">Data Pengajuan</string>
     <string name="title_notifications">Pengaturan</string>
     <string name="loading">Memuat</string>
@@ -42,4 +46,15 @@
     <string name="dibayarkan_kepada_required">Dibayarkan kepada dibutuhkan</string>
     <string name="nomer_rekening_required">Nomor rekening dibutuhkan</string>
     <string name="tanggal_pengajuan_required">Tanggal pengajuan dibutuhkan</string>
+
+    <!--- COA -->
+    <string name="kode_parent_required">Kode parent dibutuhkan</string>
+    <string name="kode_account_required">Kode account dibutuhkan</string>
+    <string name="name_account_required">Nama akun dibutuhkan</string>
+
+    <!--- Kegiatan -->
+    <string name="nama_kegiatan_required">Nama kegiatan dibutuhkan</string>
+    <string name="nominal_anggaran_kegiatan_required">Nominal anggaran kegiatan dibutuhkan</string>
+    <string name="tanggal_kegiatan_required">Tanggal kegiatan dibutuhkan</string>
+
 </resources>
