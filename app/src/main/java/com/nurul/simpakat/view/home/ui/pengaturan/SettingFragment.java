@@ -52,7 +52,7 @@ public class SettingFragment extends Fragment {
     }
 
     private void setBindingData() {
-        nama.setText(preferenceUtils.getString(Constanta.PREF_NAME, ""));
+        nama.setText(preferenceUtils.getString(Constanta.PREF_NAME, "") + " - " + preferenceUtils.getString(Constanta.PREF_JABATAN, ""));
         nip.setText("NIP : " + preferenceUtils.getString(Constanta.PREF_ID, ""));
         String name = isNull(preferenceUtils.getString(Constanta.PREF_NAME, ""))
                 || preferenceUtils.getString(Constanta.PREF_NAME, "")

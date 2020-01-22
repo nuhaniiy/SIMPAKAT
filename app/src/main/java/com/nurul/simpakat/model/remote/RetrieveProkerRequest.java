@@ -9,8 +9,32 @@ import lombok.Data;
 public class RetrieveProkerRequest {
 
     @Expose
+    @SerializedName("NIP")
+    private String nip;
+
+    @Expose
+    @SerializedName("kode_unit_kerja")
+    private String kodeUnitKerja;
+
+    @Expose
     @SerializedName("jabatan")
     private String jabatan;
+
+    public String getNip() {
+        return nip;
+    }
+
+    public void setNip(String nip) {
+        this.nip = nip;
+    }
+
+    public String getKodeUnitKerja() {
+        return kodeUnitKerja;
+    }
+
+    public void setKodeUnitKerja(String kodeUnitKerja) {
+        this.kodeUnitKerja = kodeUnitKerja;
+    }
 
     public String getJabatan() {
         return jabatan;

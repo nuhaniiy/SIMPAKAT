@@ -106,4 +106,65 @@ public class SignupPresenter extends AbstractPresenter<SignupModel, SignupView, 
             });
         }
     }
+
+    public void editKaryawan() {
+        SignUpUserCreateRequest signUpUserCreateRequest = new SignUpUserCreateRequest();
+
+        String nip = super.viewModel.getNIP();
+        String kodeUnitKerja = super.viewModel.getKodeUnitKerja();
+        String name = super.viewModel.getName();
+        String email = super.viewModel.getEmail();
+        String jabatan = super.viewModel.getJabatan();
+        Boolean resetPass = super.viewModel.getResetPass();
+
+        if(resetPass) {
+            super.view.displayLoadIndicator();
+            signUpUserCreateRequest.setNip(nip);
+            signUpUserCreateRequest.setKodeUnitKerja(kodeUnitKerja);
+            signUpUserCreateRequest.setEmail(email);
+            signUpUserCreateRequest.setPassword(EncryptionUtils.getSHA256("trilogi"));
+            signUpUserCreateRequest.setNamaUser(name);
+            signUpUserCreateRequest.setJabatan(jabatan);
+        } else {
+            super.view.displayLoadIndicator();
+            signUpUserCreateRequest.setNip(nip);
+            signUpUserCreateRequest.setKodeUnitKerja(kodeUnitKerja);
+            signUpUserCreateRequest.setEmail(email);
+            signUpUserCreateRequest.setNamaUser(name);
+            signUpUserCreateRequest.setPassword("");
+            signUpUserCreateRequest.setJabatan(jabatan);
+        }
+
+        callSignUpUserCreateByEmail = getRemoteFunctions().callEditUserCreateByEmail(signUpUserCreateRequest);
+
+        callSignUpUserCreateByEmail.enqueue(new Callback<SignUpUserCreateResponse>() {
+
+            @Override
+            public void onResponse(Call<SignUpUserCreateResponse> call, Response<SignUpUserCreateResponse> response) {
+                SignUpUserCreateResponse signUpUserCreateResponse;
+                String message;
+
+                getView().hideLoadIndicator();
+                signUpUserCreateResponse = response.body();
+                Log.d("EDIT", "isi response regis " + signUpUserCreateResponse);
+
+                if (TextUtils.equalIgnoreCase(
+                        signUpUserCreateResponse.getData(),
+                        Constanta.OK)) {
+                    Log.d("EDIT", "success");
+                    getView().hideLoadIndicator();
+                    getView().onEmailSuccessReg();
+                }
+                else {
+                    getView().displayMessage("Ubah Data", signUpUserCreateResponse.getReasonText(), false);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SignUpUserCreateResponse> call, Throwable t) {
+                Log.e("ERROR", "error ubah data : " + t.getMessage());
+                getView().hideLoadIndicator();
+            }
+        });
+    }
 }

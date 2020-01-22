@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -88,11 +89,18 @@ public class KegiatanFragment extends AbstractFragmentView<KegiatanModel> implem
     @BindView(R.id.vw_tanggal_kegiatan)
     TextView tanggalKegiatan;
 
+    @BindView(R.id.vw_status_kegiatan)
+    TextView statusKegiatan;
+
+    @BindView(R.id.btn_laporkan)
+    Button btnLaporkan;
+
 //    @BindView(R.id.layout_menu_fab)
 //    LinearLayout linearFabMenu;
 
     private Boolean flagView = false;
     private Boolean flagShowMenufab = false;
+    private ListKegiatan dataKegiatan;
 
     private KegiatanPresenter kegiatanPresenter;
 
@@ -228,6 +236,13 @@ public class KegiatanFragment extends AbstractFragmentView<KegiatanModel> implem
 
     @Override
     public void ListKegiatanClicked(ListKegiatan list) {
+        dataKegiatan = list;
+        if (list.getStatusKegiatan().equals("Belum Dilaporkan")) {
+            btnLaporkan.setVisibility(View.VISIBLE);
+        } else {
+            btnLaporkan.setVisibility(View.GONE);
+        }
+
         if(flagView) {
             return;
         } else {
@@ -246,6 +261,7 @@ public class KegiatanFragment extends AbstractFragmentView<KegiatanModel> implem
             namaProker.setText(": "+list.getNamaProker());
             nominalAnggaran.setText(": "+list.getNominal());
             tanggalKegiatan.setText(": "+list.getTanggalKegiatan());
+            statusKegiatan.setText(": "+list.getStatusKegiatan());
         }
     }
 
@@ -266,6 +282,7 @@ public class KegiatanFragment extends AbstractFragmentView<KegiatanModel> implem
         namaProker.setText("");
         nominalAnggaran.setText("");
         tanggalKegiatan.setText("");
+        statusKegiatan.setText("");
     }
 
     @OnClick(R.id.btn_laporkan)
@@ -281,6 +298,7 @@ public class KegiatanFragment extends AbstractFragmentView<KegiatanModel> implem
         intent.putExtra("namaProker", namaProker.getText().toString());
         intent.putExtra("namaKegiatan", namaKegiatan.getText().toString());
         intent.putExtra("nominal", nominalAnggaran.getText().toString());
+        intent.putExtra("id", dataKegiatan.getIdKegiatan());
         startActivity(intent);
 //        name = namaPengaju.getText().toString();
 //        TranslateAnimation slide = new TranslateAnimation(0, 0, 0, 1200);
@@ -292,5 +310,11 @@ public class KegiatanFragment extends AbstractFragmentView<KegiatanModel> implem
 //        avLoadingIndicatorView.setVisibility(View.VISIBLE);
 //        layoutDataPengajuan.setVisibility(View.GONE);
 //        updateApprovalSubmission("Setuju", idPengajuan, getAppPreference().getString(Constanta.PREF_JABATAN, ""));
+    }
+
+    @Override
+    public void onResume() {
+        kegiatanPresenter.requestDataKegiatanFromServer(getAppPreference().getString(Constanta.PREF_ID,""));
+        super.onResume();
     }
 }

@@ -119,7 +119,8 @@ public class ProgramKerjaDekanFragment extends AbstractFragmentView<ProkerModel>
 //            String topic = intent.getAction();
             String from = intent.getStringExtra("from");
             if(from.equals("added")) {
-                prokerPresenter.requestDataProkerFromServer(getAppPreference().getString(Constanta.PREF_JABATAN, ""));
+                prokerPresenter.requestDataProkerFromServer(getAppPreference().getString(Constanta.PREF_JABATAN, ""),
+                        getAppPreference().getString(Constanta.PREF_ID, ""), getAppPreference().getString(Constanta.PREF_KODE_UNIT_KERJA, ""));
             }
         }
     };
@@ -128,7 +129,8 @@ public class ProgramKerjaDekanFragment extends AbstractFragmentView<ProkerModel>
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        prokerPresenter.requestDataProkerFromServer(getAppPreference().getString(Constanta.PREF_JABATAN, ""));
+        prokerPresenter.requestDataProkerFromServer(getAppPreference().getString(Constanta.PREF_JABATAN, ""),
+                getAppPreference().getString(Constanta.PREF_ID, ""), getAppPreference().getString(Constanta.PREF_KODE_UNIT_KERJA, ""));
     }
 
     @Override

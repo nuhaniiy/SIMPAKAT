@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -34,11 +35,13 @@ import com.nurul.simpakat.common.util.PreferenceUtils;
 import com.nurul.simpakat.model.simpakat.EmployeeModel;
 import com.nurul.simpakat.model.simpakat.ListEmployee;
 import com.nurul.simpakat.presenter.EmployeePresenter;
+import com.nurul.simpakat.view.CrudKaryawan;
 import com.nurul.simpakat.view.EmployeeView;
 import com.nurul.simpakat.view.warek.adapter.ListEmployeeAdapter;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -87,6 +90,7 @@ public class DataKaryawanFragment extends AbstractFragmentView<EmployeeModel> im
     private EmployeePresenter employeePresenter;
 
     ListEmployeeAdapter adapter;
+    private ListEmployee employeeList;
 
     public DataKaryawanFragment() {
         // Required empty public constructor
@@ -111,7 +115,9 @@ public class DataKaryawanFragment extends AbstractFragmentView<EmployeeModel> im
         setAppPreference(new PreferenceUtils(getActivity(), Constanta.APPLICATION_PREFERENCE));
 
         fabAddKaryawan.setOnClickListener(view -> {
-//            startActivity(new Intent(getActivity(), AddPengajuanProkerActivity.class));
+            Intent intent = new Intent(getActivity(), CrudDataKaryawanActivity.class);
+            intent.putExtra("action", "0");
+            getActivity().startActivity(intent);
         });
 
         super.viewModel = new EmployeeModel();
@@ -135,6 +141,8 @@ public class DataKaryawanFragment extends AbstractFragmentView<EmployeeModel> im
 //            String topic = intent.getAction();
             String from = intent.getStringExtra("from");
             if(from.equals("added")) {
+                employeePresenter.requestDataEmployeeFromServer();
+            } else if(from.equals("update")) {
                 employeePresenter.requestDataEmployeeFromServer();
             }
         }
@@ -185,6 +193,7 @@ public class DataKaryawanFragment extends AbstractFragmentView<EmployeeModel> im
 
     @Override
     public void ListEmployeeClicked(ListEmployee list) {
+        employeeList = list;
         if(flagView) {
             return;
         } else {
@@ -227,5 +236,44 @@ public class DataKaryawanFragment extends AbstractFragmentView<EmployeeModel> im
         namaUnitKerja.setText("");
         emailKaryawan.setText("");
         jabatanKaryawan.setText("");
+    }
+
+    @OnClick(R.id.btn_edit)
+    void onEditDataKaryawan() {
+        flagView = false;
+        TranslateAnimation slide = new TranslateAnimation(0, 0, 0, 2400);
+        slide.setDuration(1000);
+//        slide.setFillAfter(true);
+        bottomSheetLayout.startAnimation(slide);
+        bottomSheetLayout.setVisibility(View.GONE);
+
+        Intent intent = new Intent(getActivity(), CrudDataKaryawanActivity.class);
+        intent.putExtra("action", "1");
+        intent.putExtra("nip", employeeList.getNip());
+        intent.putExtra("nama", employeeList.getNamaKaryawan());
+        intent.putExtra("email", employeeList.getEmail());
+        intent.putExtra("jabatan", employeeList.getJabatan());
+        intent.putExtra("unitKerja", employeeList.getKodeUnitKerja());
+        getActivity().startActivity(intent);
+    }
+
+//    @OnClick(R.id.btn_delete)
+//    void onDeleteDataKaryawan() {
+//        new AlertDialog.Builder(getActivity())
+//                .setTitle("Konfirmasi")
+//                .setMessage("Apakah anda yakin ingin menghapus?")
+//                .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> onClickTextLogout())
+//                .setNegativeButton(android.R.string.no, (dialog, whichButton) -> dialog.dismiss())
+//                .show();
+//    }
+
+    private void onClickTextLogout() {
+
+    }
+
+    @Override
+    public void onResume() {
+        employeePresenter.requestDataEmployeeFromServer();
+        super.onResume();
     }
 }

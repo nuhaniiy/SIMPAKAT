@@ -33,11 +33,14 @@ import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.nurul.simpakat.BaseView;
 import com.nurul.simpakat.R;
 import com.nurul.simpakat.common.Constanta;
+import com.nurul.simpakat.common.util.ProgressUtils;
 import com.nurul.simpakat.common.util.TextUtils;
 import com.nurul.simpakat.model.simpakat.BuktiBayarItemHolder;
 import com.nurul.simpakat.model.simpakat.BuktiBayarModel;
+import com.nurul.simpakat.view.LaporanView;
 import com.nurul.simpakat.view.laporan.adapter.AddLaporanAdapter;
 import com.nurul.simpakat.view.laporan.adapter.BaseAdapter;
 import com.nurul.simpakat.view.laporan.adapter.DefaultAdapter;
@@ -80,6 +83,7 @@ public class LaporanAnggaranActivity extends AppCompatActivity implements AddLap
 
     static final Integer CAMERAS = 0x2;
     public int posisi = 0;
+    private String idKegiatan = "";
     private String[] listProker;
     private String[] kodeProker;
     private JSONArray jsonArray;
@@ -109,6 +113,7 @@ public class LaporanAnggaranActivity extends AppCompatActivity implements AddLap
             programKerja.setText(getIntent().getStringExtra("namaProker").replace(":",""));
             namaKegiatan.setText(getIntent().getStringExtra("namaKegiatan").replace(":",""));
             nominalAnggaran.setText(getIntent().getStringExtra("nominal").replace(":", ""));
+            idKegiatan = getIntent().getStringExtra("id");
         }
 
 //        retrieveDataUnitKerja();
@@ -196,12 +201,11 @@ public class LaporanAnggaranActivity extends AppCompatActivity implements AddLap
 
             @Override
             public void onBindViewHolder(Context context, List<BuktiBayarModel> listItem, BuktiBayarItemHolder holder, int position) {
-//                LaporanAnggaranActivity.instance().postFoto();
                 if(listItem.get(posisi).getImgFoto() != null) {
                     holder.buktiBayar.setImageBitmap(listItem.get(posisi).getImgFoto());
                 }
                 holder.buktiBayar.setOnClickListener(view -> {
-                    LaporanAnggaranActivity.instance().setPositioItem(position);
+                    LaporanAnggaranActivity.instance().setPositionItem(position);
                     LaporanAnggaranActivity.instance().postFoto();
                 });
             }
@@ -219,6 +223,7 @@ public class LaporanAnggaranActivity extends AppCompatActivity implements AddLap
         }
         else if (requestCode == 12 && resultCode == RESULT_OK && null != data) {
             File file = new File(ImagePicker.getImages(data).get(0).getPath());
+            Log.e("NAMEIMG", "name image : " + file.getName());
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inSampleSize = 2;
             final Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath(), options);
@@ -251,19 +256,15 @@ public class LaporanAnggaranActivity extends AppCompatActivity implements AddLap
                     rotatedBitmap = bitmap;
             }
 
-//            iv_foto.setImageBitmap(rotatedBitmap);
-//            iv_foto.setMaxHeight(bitmap.getHeight());
-//            iv_foto.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//            iv_foto.setPadding(0,0,0,0);
-
             listBukti.get(posisi).setImgFoto(rotatedBitmap);
+            listBukti.get(posisi).setPathBukti(file.getName());
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             rotatedBitmap.compress(Bitmap.CompressFormat.JPEG, 90, baos); //bm is the bitmap object
             byte[] b = baos.toByteArray();
 
             String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
-            Log.e("base", encodedImage);
+//            Log.e("base", encodedImage);
 
             laporanAdapter.notifyDataSetChanged();
         }
@@ -320,7 +321,7 @@ public class LaporanAnggaranActivity extends AppCompatActivity implements AddLap
                 .start(12);
     }
 
-    public void setPositioItem(int position) {
+    public void setPositionItem(int position) {
         posisi = position;
     }
 
@@ -331,18 +332,83 @@ public class LaporanAnggaranActivity extends AppCompatActivity implements AddLap
 
     @OnClick(R.id.btn_laporkan)
     void onLaporkanClicked() {
-        Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
-        Thread myThread = new Thread(){
+        updateLaporanKegiatan();
+    }
+
+    private void updateLaporanKegiatan() {
+        ProgressUtils.show(this, "", getString(R.string.loading), false);
+        String url = APPLICATION_URL+APPLICATION_PATH+"simpakat_laporkan_kegiatan.php";
+        AsyncHttpClient client = new AsyncHttpClient(true,80,443);
+        client.setTimeout(60000);
+        RequestParams params = new RequestParams();
+
+        params.put("status_kegiatan", "Sudah Dilaporkan");
+        params.put("id_kegiatan", idKegiatan);
+        params.setUseJsonStreamer(true);
+
+        client.post(url,params, new AsyncHttpResponseHandler() {
             @Override
-            public void run(){
-                try{
-                    sleep(3000);
-                    finish();
-                } catch (InterruptedException e){
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+                ProgressUtils.dismiss();
+                String response = null;
+                try {
+                    response = new String(responseBody, "UTF-8");
+                    Log.d("respond",response);
+                    JSONObject json, jsonData;
+                    try {
+                        json = new JSONObject(response);
+                        Log.d("respond","update data : " + json.getString("resultCode"));
+
+                        if(json.getString("resultCode").equals(Constanta.OK)) {
+                            Toast.makeText(getApplicationContext(), json.getString("messageText"), Toast.LENGTH_LONG).show();
+                            Thread myThread = new Thread(){
+                                @Override
+                                public void run(){
+                                    try{
+                                        sleep(3000);
+                                        finish();
+                                    } catch (InterruptedException e){
+                                        e.printStackTrace();
+                                    }
+                                }
+                            };
+                            myThread.start();
+                        } else {
+                            Toast.makeText(getApplicationContext(), json.getString("messageText"), Toast.LENGTH_LONG).show();
+                            Thread myThread = new Thread(){
+                                @Override
+                                public void run(){
+                                    try{
+                                        sleep(3000);
+                                        finish();
+                                    } catch (InterruptedException e){
+                                        e.printStackTrace();
+                                    }
+                                }
+                            };
+                            myThread.start();
+                        }
+                    } catch (JSONException ex) {
+
+                    }
+
+                } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
             }
-        };
-        myThread.start();
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+                ProgressUtils.dismiss();
+                String response;
+                try {
+                    response = new String(responseBody, "UTF-8");
+                    Log.d("error",response);
+                    //Toast.makeText(EditBusinessUnitWizardActivity.this,"Cannot Connect to server",Toast.LENGTH_LONG).show();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

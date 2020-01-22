@@ -33,4 +33,9 @@ public class BuktiBayarItemHolder extends BaseHolder {
     void onClickImageRemove() {
         callOnListItemRemove();
     }
+
+//    @OnClick(R.id.img_bukti)
+//    void onClickImageBukti() {
+//        callOnListItemRemove();
+//    }
 }

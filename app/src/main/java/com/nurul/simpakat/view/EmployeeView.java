@@ -1,5 +1,7 @@
 package com.nurul.simpakat.view;
 
+import android.content.Intent;
+
 import com.nurul.simpakat.BaseView;
 import com.nurul.simpakat.model.simpakat.EmployeeModel;
 import com.nurul.simpakat.model.simpakat.ListEmployee;

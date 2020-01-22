@@ -106,10 +106,12 @@ public class ProkerPresenter extends AbstractPresenter<ProkerModel, ProkerView, 
         }
     }
 
-    public void requestDataProkerFromServer(String jabatan) {
+    public void requestDataProkerFromServer(String jabatan, String nip, String kodeUnit) {
         RetrieveProkerRequest retrieveProkerRequest = new RetrieveProkerRequest();
 
         String role = jabatan;
+        String iduser = nip;
+        String kodeUnitKerja = kodeUnit;
         if (android.text.TextUtils.isEmpty(role)) {
             getView().displayMessage(
                     getView().getResourceString(R.string.info),
@@ -117,6 +119,9 @@ public class ProkerPresenter extends AbstractPresenter<ProkerModel, ProkerView, 
         }
 
         retrieveProkerRequest.setJabatan(jabatan);
+        retrieveProkerRequest.setNip(nip);
+        retrieveProkerRequest.setKodeUnitKerja(kodeUnitKerja);
+
         callListProkers = getRemoteFunctions().callGetDataProker(retrieveProkerRequest);
 
         callListProkers.enqueue(new Callback<ListDatProkerResponse>() {

@@ -57,7 +57,7 @@
         app:backgroundTint="@color/colorWhite"
         android:layout_margin="10dp"
         app:srcCompat="@drawable/ic_fab_pengajuan"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
 
     <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/karyawan_list_loading"
@@ -73,7 +73,7 @@
     <RelativeLayout
         android:id="@+id/layout_bottom_sheet"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/background_bottom_sheet_rounded"
         android:visibility="gone">
@@ -203,18 +203,50 @@
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/layout_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_above="@+id/layout_button"
-            android:layout_margin="10dp">
+            android:layout_alignParentBottom="true">
 
-            <!--            <TextView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="DATA" />-->
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btn_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
+                    android:text="Ubah"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/background_button"/>
+
+<!--                <Button-->
+<!--                    android:id="@+id/btn_delete"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:text="Hapus"-->
+<!--                    android:textColor="@color/colorWhite"-->
+<!--                    android:background="@drawable/background_button"/>-->
+            </LinearLayout>
+        </RelativeLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_above="@+id/layout_button"-->
+<!--            android:layout_margin="10dp">-->
+
+<!--            &lt;!&ndash;            <TextView&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:text="DATA" />&ndash;&gt;-->
+<!--        </LinearLayout>-->
     </RelativeLayout>
 
 </RelativeLayout>

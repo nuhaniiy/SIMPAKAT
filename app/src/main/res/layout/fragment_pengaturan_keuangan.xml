@@ -108,7 +108,8 @@
             android:drawableTint="@color/gray"
             android:foreground="?attr/selectableItemBackground"
             android:padding="8dp"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:visibility="gone"/>
 
 
         <View

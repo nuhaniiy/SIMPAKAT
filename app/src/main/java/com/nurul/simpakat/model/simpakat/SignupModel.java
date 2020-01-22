@@ -12,6 +12,7 @@ public class SignupModel {
     private String confirmPassword;
     private String jabatan;
     private String dToken;
+    private Boolean resetPass;
 
     public String getNIP() {
         return NIP;
@@ -75,5 +76,13 @@ public class SignupModel {
 
     public void setdToken(String dToken) {
         this.dToken = dToken;
+    }
+
+    public Boolean getResetPass() {
+        return resetPass;
+    }
+
+    public void setResetPass(Boolean resetPass) {
+        this.resetPass = resetPass;
     }
 }

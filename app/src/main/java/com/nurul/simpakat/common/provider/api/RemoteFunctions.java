@@ -42,6 +42,10 @@ public interface RemoteFunctions {
     Call<SignUpUserCreateResponse> callSignUpUserCreateByEmail(
             @Body SignUpUserCreateRequest request);
 
+    @POST("simpakat_edit_user.php")
+    Call<SignUpUserCreateResponse> callEditUserCreateByEmail(
+            @Body SignUpUserCreateRequest request);
+
     @POST("simpakat_add_proker.php")
     Call<ProkerCreateResponse> callProkerCreate(
             @Body ProkerCreateRequest request);
