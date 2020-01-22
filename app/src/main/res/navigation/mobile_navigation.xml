@@ -23,6 +23,12 @@
         android:label="@string/title_kegiatan"
         tools:layout="@layout/fragment_kegiatan" />
 
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_laporan"-->
+<!--        android:name=""-->
+<!--        android:label="@string/title_kegiatan"-->
+<!--        tools:layout="@layout/fragment_kegiatan" />-->
+
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.nurul.simpakat.view.home.ui.pengaturan.SettingFragment"

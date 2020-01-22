@@ -37,6 +37,9 @@ public class Constanta {
     public static final String PREF_FCM_TOKEN = "fcm_token";
     public static final int NOTIFY_SUBMISSION = 1010;
 
+    public static final int REQUEST_ADD_BUKTI = 10009;
+    public static final int REQ_PERMS_CAMERAS = 10008;
+
     public static boolean isValidEmailID(String email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }

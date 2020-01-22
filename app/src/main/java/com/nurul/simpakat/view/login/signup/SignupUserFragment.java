@@ -119,13 +119,24 @@ public class SignupUserFragment extends AbstractFragmentView<SignupModel> implem
     private void setMaterialData() {
         spinnerJabatan.setItems("-- Pilih --", "Unit Kerja", "Dekan", "Keuangan", "Wakil Rektor 1", "Wakil Rektor 2", "Rektor");
 
-        spinnerJabatan.setOnItemSelectedListener((view, position, id, item) -> {
-            if(position == 1 || position == 2) {
-                spinnerUnitKerja.setEnabled(true);
-            } else {
-                spinnerUnitKerja.setEnabled(false);
+        spinnerJabatan.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                if(item.equals("Unit Kerja")) {
+                    spinnerUnitKerja.setEnabled(true);
+                } else {
+                    spinnerUnitKerja.setEnabled(false);
+                }
             }
         });
+
+//        spinnerJabatan.setOnItemSelectedListener((view, position, id, item) -> {
+//            if(position == 1 || position == 2) {
+//                spinnerUnitKerja.setEnabled(true);
+//            } else {
+//                spinnerUnitKerja.setEnabled(false);
+//            }
+//        });
     }
 
     private void setOnFocusEditText(){
@@ -415,7 +426,7 @@ public class SignupUserFragment extends AbstractFragmentView<SignupModel> implem
             doNext = false;
         }
 
-        if(spinnerJabatan.getText().toString().equals("Wakil Rektor 1") || spinnerJabatan.getText().toString().equals("Wakil Rektor 2")
+        if(spinnerJabatan.getText().toString().equals("Dekan") || spinnerJabatan.getText().toString().equals("Wakil Rektor 1") || spinnerJabatan.getText().toString().equals("Wakil Rektor 2")
         || spinnerJabatan.getText().toString().equals("Rektor") || spinnerJabatan.getText().toString().equals("Keuangan")) {
 
         } else {
@@ -441,8 +452,7 @@ public class SignupUserFragment extends AbstractFragmentView<SignupModel> implem
             super.viewModel.setConfirmPassword(editConfirmPassword.getText().toString());
             super.viewModel.setJabatan(spinnerJabatan.getText().toString());
             super.viewModel.setdToken(dToken);
-            if(spinnerJabatan.getText().toString().equalsIgnoreCase("Unit Kerja")
-                    || spinnerJabatan.getText().toString().equalsIgnoreCase("Dekan")) {
+            if(spinnerJabatan.getText().toString().equalsIgnoreCase("Unit Kerja")) {
                 String[] idUnitKerja = spinnerUnitKerja.getText().toString().replace(" ","").split("-");
                 super.viewModel.setKodeUnitKerja(idUnitKerja[0]);
             } else {
@@ -480,7 +490,7 @@ public class SignupUserFragment extends AbstractFragmentView<SignupModel> implem
     }
 
     private void retrieveDataUnitKerja() {
-        String url = APPLICATION_URL+APPLICATION_PATH+"simpakat_get_data_unitkerja.php";
+        String url = APPLICATION_URL+APPLICATION_PATH+"simpakat_get_list_data_unit_kerja.php";
         AsyncHttpClient client = new AsyncHttpClient(true,80,443);
         client.setTimeout(60000);
         RequestParams params = new RequestParams();

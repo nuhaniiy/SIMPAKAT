@@ -207,7 +207,6 @@ public class ListDataPengajuanFragment extends AbstractFragmentView<ListPengajua
 
     @Override
     public void ListPengajuanClicked(ListPengajuan list) {
-//        bottomSheetLayout.setAnimation(R.style.BottomSheetAnimation);
         if(flagView) {
             return;
         } else {
@@ -217,27 +216,28 @@ public class ListDataPengajuanFragment extends AbstractFragmentView<ListPengajua
 //            slide.setFillAfter(true);
             bottomSheetLayout.startAnimation(slide);
             bottomSheetLayout.setVisibility(View.VISIBLE);
-//            bottomSheetLayout.bringToFront();
+            bottomSheetLayout.bringToFront();
 
             clearData();
 
             nipPengaju = list.getNip();
             idPProkerPengaju = list.getIdProker();
             namaProker.setText(list.getNamaProker());
-            namaPengaju.setText(": "+list.getNamaKaryawan() + " - " + list.getNip());
-            biaya.setText(": "+list.getBiaya());
-            biayaTerpakai.setText(": "+list.getBiayaTerpakai());
-            sisaBiaya.setText(": "+list.getSisaBiaya());
-            biayaDiajukan.setText(": "+list.getBiayaDiajukan());
-            dibayarKepada.setText(": "+list.getDibayarKepada());
-            jabatan.setText(": "+list.getJabatan());
-            noRekening.setText(": "+list.getNoRekening());
+            namaPengaju.setText(list.getNamaKaryawan() + " - " + list.getNip());
+            biaya.setText(list.getBiaya());
+            biayaTerpakai.setText(list.getBiayaTerpakai());
+            sisaBiaya.setText(list.getSisaBiaya());
+            biayaDiajukan.setText(list.getBiayaDiajukan());
+            dibayarKepada.setText(list.getDibayarKepada());
+            jabatan.setText(list.getJabatan());
+            noRekening.setText(list.getNoRekening());
             idPengajuan = list.getIdPengajuan();
         }
     }
 
     @OnClick(R.id.tv_slide_down)
     void onSlideDownData() {
+        flagView = false;
 //        Toast.makeText(getActivity().getApplicationContext(), "click", Toast.LENGTH_LONG).show();
         TranslateAnimation slide = new TranslateAnimation(0, 0, 0, 1200);
         slide.setDuration(1000);
@@ -248,10 +248,11 @@ public class ListDataPengajuanFragment extends AbstractFragmentView<ListPengajua
 
     @OnClick(R.id.btn_acc)
     void onDataAccepted() {
+        flagView = false;
         name = namaPengaju.getText().toString();
         TranslateAnimation slide = new TranslateAnimation(0, 0, 0, 1200);
         slide.setDuration(1000);
-        slide.setFillAfter(true);
+//        slide.setFillAfter(true);
         bottomSheetLayout.startAnimation(slide);
         bottomSheetLayout.setVisibility(View.GONE);
         clearData();
@@ -262,10 +263,11 @@ public class ListDataPengajuanFragment extends AbstractFragmentView<ListPengajua
 
     @OnClick(R.id.btn_reject)
     void onDataRejected() {
+        flagView = false;
         name = namaPengaju.getText().toString();
         TranslateAnimation slide = new TranslateAnimation(0, 0, 0, 1200);
         slide.setDuration(1000);
-        slide.setFillAfter(true);
+//        slide.setFillAfter(true);
         bottomSheetLayout.startAnimation(slide);
         bottomSheetLayout.setVisibility(View.GONE);
         clearData();

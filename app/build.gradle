@@ -50,6 +50,13 @@ android {
             println("Filename: " + output.outputFileName)
         }
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
 }
 
 def getDate() {
@@ -117,6 +124,11 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.0.0'
     implementation 'androidx.navigation:navigation-ui:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+
+    // Material design form
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+
+    implementation 'com.github.esafirm.android-image-picker:imagepicker:1.8.0'
 
     //Bottom Sheet
 //    implementation "com.arthurivanets.bottomsheet:bottomsheets-core:1.0.0"

@@ -20,12 +20,14 @@ public class ListProkerAdapter extends RecyclerView.Adapter<ListProkerAdapter.Li
 
     private ArrayList<ListProker> dataList;
     private Context mContext;
+    private ListProkerClicked clickListener;
 //    private RecyclerItemClickListener recyclerItemClickListener;
 
 
-    public ListProkerAdapter(ArrayList<ListProker> dataList, Context mContext) {
+    public ListProkerAdapter(ArrayList<ListProker> dataList, Context mContext, ListProkerClicked clickListener) {
         this.dataList = dataList;
         this.mContext = mContext;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -48,10 +50,11 @@ public class ListProkerAdapter extends RecyclerView.Adapter<ListProkerAdapter.Li
         }
 
         holder.itemView.setOnClickListener(view -> {
+            this.clickListener.ListProkerClicked(dataList.get(position));
 //            recyclerItemClickListener.onItemClick(dataList.get(position));
-            Intent intent = new Intent(mContext, DetailProgramKerjaActivity.class);
-            intent.putExtra("data", dataList.get(position).getIdProker());
-            mContext.startActivity(intent);
+//            Intent intent = new Intent(mContext, DetailProgramKerjaActivity.class);
+//            intent.putExtra("data", dataList.get(position).getIdProker());
+//            mContext.startActivity(intent);
         });
     }
 
@@ -70,5 +73,9 @@ public class ListProkerAdapter extends RecyclerView.Adapter<ListProkerAdapter.Li
             statusProker =  itemView.findViewById(R.id.status);
 
         }
+    }
+
+    public interface ListProkerClicked{
+        void ListProkerClicked(ListProker list);
     }
 }

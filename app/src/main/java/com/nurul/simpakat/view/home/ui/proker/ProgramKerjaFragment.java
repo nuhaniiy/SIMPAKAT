@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,8 +37,10 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class ProgramKerjaFragment extends AbstractFragmentView<ProkerModel> implements ProkerView {
+public class ProgramKerjaFragment extends AbstractFragmentView<ProkerModel> implements ProkerView,
+        ListProkerAdapter.ListProkerClicked{
 
     @BindView(R.id.proker_list_loading)
     AVLoadingIndicatorView avLoadingIndicatorView;
@@ -53,7 +57,23 @@ public class ProgramKerjaFragment extends AbstractFragmentView<ProkerModel> impl
     @BindView(R.id.recycler_prgram_kerja)
     RecyclerView rvListProker;
 
+    @BindView(R.id.layout_bottom_sheet)
+    RelativeLayout bottomSheetLayout;
+
+    @BindView(R.id.vw_nama_proker)
+    TextView namaProker;
+
+    @BindView(R.id.vw_keterangan)
+    TextView keterangan;
+
+    @BindView(R.id.vw_jenis_pembiayaan)
+    TextView jenisPembiayaan;
+
+    @BindView(R.id.vw_biaya)
+    TextView biaya;
+
     private ProkerPresenter prokerPresenter;
+    private Boolean flagView = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -135,9 +155,49 @@ public class ProgramKerjaFragment extends AbstractFragmentView<ProkerModel> impl
     }
 
     public void setDataToRecyclerView(ArrayList<ListProker> listProkerArrayList) {
-        ListProkerAdapter adapter = new ListProkerAdapter(listProkerArrayList, getContext());
+        ListProkerAdapter adapter = new ListProkerAdapter(listProkerArrayList, getContext(), this);
         rvListProker.setLayoutManager(new LinearLayoutManager(getContext()));
         rvListProker.setItemAnimator(new DefaultItemAnimator());
         rvListProker.setAdapter(adapter);
+    }
+
+    @Override
+    public void ListProkerClicked(ListProker list) {
+        if(flagView) {
+            return;
+        } else {
+            flagView = true;
+            TranslateAnimation slide = new TranslateAnimation(0, 0, 1200, 0);
+            slide.setDuration(1000);
+//            slide.setFillAfter(true);
+            bottomSheetLayout.startAnimation(slide);
+            bottomSheetLayout.setVisibility(View.VISIBLE);
+            bottomSheetLayout.bringToFront();
+
+            clearData();
+
+            namaProker.setText(list.getNamaProker());
+            keterangan.setText(list.getKeterangan());
+            biaya.setText(list.getBiaya());
+            jenisPembiayaan.setText(list.getJenisPembiayaan());
+        }
+    }
+
+    @OnClick(R.id.tv_slide_down)
+    void onSlideDownData() {
+        flagView = false;
+//        Toast.makeText(getActivity().getApplicationContext(), "click", Toast.LENGTH_LONG).show();
+        TranslateAnimation slide = new TranslateAnimation(0, 0, 0, 1200);
+        slide.setDuration(1000);
+//        slide.setFillAfter(true);
+        bottomSheetLayout.startAnimation(slide);
+        bottomSheetLayout.setVisibility(View.GONE);
+    }
+
+    private void clearData() {
+        namaProker.setText("");
+        keterangan.setText("");
+        biaya.setText("");
+        jenisPembiayaan.setText("");
     }
 }

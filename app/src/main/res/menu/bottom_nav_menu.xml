@@ -16,6 +16,11 @@
         android:icon="@drawable/ic_event_note_black_24dp"
         android:title="@string/title_kegiatan" />
 
+<!--    <item-->
+<!--        android:id="@+id/navigation_laporan"-->
+<!--        android:icon="@drawable/ic_content_paste_black_24dp"-->
+<!--        android:title="@string/title_kegiatan" />-->
+
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_settings_menu"

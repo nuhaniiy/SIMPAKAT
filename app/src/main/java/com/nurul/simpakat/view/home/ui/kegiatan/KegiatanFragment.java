@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.TooltipCompat;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -19,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -33,6 +35,7 @@ import com.nurul.simpakat.model.simpakat.ListKegiatan;
 import com.nurul.simpakat.presenter.KegiatanPresenter;
 import com.nurul.simpakat.view.KegiatanView;
 import com.nurul.simpakat.view.home.adapter.ListKegiatanAdapter;
+import com.nurul.simpakat.view.laporan.LaporanAnggaranActivity;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
@@ -48,6 +51,12 @@ public class KegiatanFragment extends AbstractFragmentView<KegiatanModel> implem
 
     @BindView(R.id.fab_add_kegiatan)
     FloatingActionButton fabAddKegiatan;
+
+//    @BindView(R.id.fab_add_laporan)
+//    FloatingActionButton fabAddLaporan;
+
+//    @BindView(R.id.fab_show_menu_fab)
+//    FloatingActionButton fabShowMenu;
 
     @BindView(R.id.kegiatan_list_loading)
     AVLoadingIndicatorView avLoadingIndicatorView;
@@ -79,7 +88,11 @@ public class KegiatanFragment extends AbstractFragmentView<KegiatanModel> implem
     @BindView(R.id.vw_tanggal_kegiatan)
     TextView tanggalKegiatan;
 
+//    @BindView(R.id.layout_menu_fab)
+//    LinearLayout linearFabMenu;
+
     private Boolean flagView = false;
+    private Boolean flagShowMenufab = false;
 
     private KegiatanPresenter kegiatanPresenter;
 
@@ -105,9 +118,44 @@ public class KegiatanFragment extends AbstractFragmentView<KegiatanModel> implem
 
         setAppPreference(new PreferenceUtils(getActivity(), Constanta.APPLICATION_PREFERENCE));
 
-        fabAddKegiatan.setOnClickListener(view -> {
+        fabAddKegiatan.setOnClickListener(view1 -> {
             startActivity(new Intent(getActivity(), AddKegiatanActivity.class));
         });
+
+//        fabShowMenu.setOnClickListener(view -> {
+//            flagShowMenufab = !flagShowMenufab;
+//
+//            TooltipCompat.setTooltipText(fabAddKegiatan, "Tambah Kegiatan");
+//            TooltipCompat.setTooltipText(fabAddLaporan, "Laporkan Kegiatan");
+//
+//            if (flagShowMenufab) {
+//                TranslateAnimation slide = new TranslateAnimation(0, 0, 2400, 0);
+//                slide.setDuration(1000);
+////            slide.setFillAfter(true);
+//                linearFabMenu.startAnimation(slide);
+//                linearFabMenu.setVisibility(View.VISIBLE);
+//
+//                fabShowMenu.setImageResource(R.drawable.ic_show_down);
+////                linearFabMenu.setVisibility(View.VISIBLE);
+//
+//                fabAddKegiatan.setOnClickListener(view1 -> {
+//                    startActivity(new Intent(getActivity(), AddKegiatanActivity.class));
+//                });
+//
+//                fabAddLaporan.setOnClickListener(view2 -> {
+//                    startActivity(new Intent(getActivity(), LaporanAnggaranActivity.class));
+//                });
+//            } else {
+////                linearFabMenu.setVisibility(View.GONE);
+//                TranslateAnimation slide = new TranslateAnimation(0, 0, 0, 2400);
+//                slide.setDuration(1000);
+////        slide.setFillAfter(true);
+//                linearFabMenu.startAnimation(slide);
+//                linearFabMenu.setVisibility(View.GONE);
+//
+//                fabShowMenu.setImageResource(R.drawable.ic_show_up);
+//            }
+//        });
 
         super.viewModel = new KegiatanModel();
         kegiatanPresenter = new KegiatanPresenter();
@@ -222,6 +270,18 @@ public class KegiatanFragment extends AbstractFragmentView<KegiatanModel> implem
 
     @OnClick(R.id.btn_laporkan)
     void onDataReported() {
+        flagView = false;
+        TranslateAnimation slide = new TranslateAnimation(0, 0, 0, 2400);
+        slide.setDuration(1000);
+//        slide.setFillAfter(true);
+        bottomSheetLayout.startAnimation(slide);
+        bottomSheetLayout.setVisibility(View.GONE);
+
+        Intent intent = new Intent(getActivity(), LaporanAnggaranActivity.class);
+        intent.putExtra("namaProker", namaProker.getText().toString());
+        intent.putExtra("namaKegiatan", namaKegiatan.getText().toString());
+        intent.putExtra("nominal", nominalAnggaran.getText().toString());
+        startActivity(intent);
 //        name = namaPengaju.getText().toString();
 //        TranslateAnimation slide = new TranslateAnimation(0, 0, 0, 1200);
 //        slide.setDuration(1000);

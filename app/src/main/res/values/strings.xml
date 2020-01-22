@@ -5,6 +5,7 @@
     <string name="title_dashboard">Submissions</string>
     <string name="title_employee">Employees</string>
     <string name="title_kegiatan">Activities</string>
+    <string name="title_laporan">Reports</string>
     <string name="title_coa">Data COA</string>
     <string name="title_unitkerja">Unit Kerja</string>
     <string name="title_notifications">Settings</string>
@@ -55,6 +56,10 @@
     <string name="nama_kegiatan_required">Activity nama required</string>
     <string name="nominal_anggaran_kegiatan_required">Cost of activity required</string>
     <string name="tanggal_kegiatan_required">Date of activity required</string>
+
+    <!--- Bukti Barang -->
+    <string name="nama_barang_required">Tools name required</string>
+    <string name="nominal_barang_required">Cost of tools required</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

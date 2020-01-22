@@ -6,6 +6,7 @@
     <string name="title_dashboard">Pengajuan</string>
     <string name="title_employee">Karyawan</string>
     <string name="title_kegiatan">Kegiatan</string>
+    <string name="title_laporan">Laporan</string>
     <string name="title_coa">Data COA</string>
     <string name="title_unitkerja">Unit Kerja</string>
     <string name="title_list_submission">Data Pengajuan</string>
@@ -56,5 +57,9 @@
     <string name="nama_kegiatan_required">Nama kegiatan dibutuhkan</string>
     <string name="nominal_anggaran_kegiatan_required">Nominal anggaran kegiatan dibutuhkan</string>
     <string name="tanggal_kegiatan_required">Tanggal kegiatan dibutuhkan</string>
+
+    <!--- Bukti Barang -->
+    <string name="nama_barang_required">Nama barang dibutuhkan</string>
+    <string name="nominal_barang_required">Nominal dibutuhkan</string>
 
 </resources>

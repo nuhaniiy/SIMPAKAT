@@ -257,7 +257,7 @@ public class AddProkerFragment extends AbstractFragmentView<ProkerModel> impleme
     }
 
     private void retrieveDataUnitKerja() {
-        String url = APPLICATION_URL+APPLICATION_PATH+"simpakat_get_data_unitkerja.php";
+        String url = APPLICATION_URL+APPLICATION_PATH+"simpakat_get_list_data_unit_kerja.php";
         AsyncHttpClient client = new AsyncHttpClient(true,80,443);
         client.setTimeout(60000);
         RequestParams params = new RequestParams();

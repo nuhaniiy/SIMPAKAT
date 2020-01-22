@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +36,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class PengajuanProkerFragment extends AbstractFragmentView<PengajuanModel> implements PengajuanView, ListPengajuanAdapter.ListPengajuanClicked {
 
@@ -52,7 +55,41 @@ public class PengajuanProkerFragment extends AbstractFragmentView<PengajuanModel
     @BindView(R.id.recycler_pengajuan_prgram_kerja)
     RecyclerView rvDataPengajuan;
 
+    @BindView(R.id.layout_bottom_sheet)
+    RelativeLayout bottomSheetLayout;
+
+    @BindView(R.id.vw_nama_proker)
+    TextView namaProker;
+
+    @BindView(R.id.vw_nama_pengaju)
+    TextView namaPengaju;
+
+    @BindView(R.id.vw_biaya)
+    TextView biaya;
+
+    @BindView(R.id.vw_biaya_terpakai)
+    TextView biayaTerpakai;
+
+    @BindView(R.id.vw_sisa_biaya)
+    TextView sisaBiaya;
+
+    @BindView(R.id.vw_biaya_diajukan)
+    TextView biayaDiajukan;
+
+    @BindView(R.id.vw_dibayar_kepada)
+    TextView dibayarKepada;
+
+    @BindView(R.id.vw_jabatan)
+    TextView jabatan;
+
+    @BindView(R.id.vw_no_rekening)
+    TextView noRekening;
+
+    @BindView(R.id.vw_tanggal_pengajuan)
+    TextView tanggalPengajuan;
+
     private PengajuanPresenter pengajuanPresenter;
+    private Boolean flagView = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -146,6 +183,51 @@ public class PengajuanProkerFragment extends AbstractFragmentView<PengajuanModel
 
     @Override
     public void ListPengajuanClicked(ListPengajuan list) {
+        if(flagView) {
+            return;
+        } else {
+            flagView = true;
+            TranslateAnimation slide = new TranslateAnimation(0, 0, 1200, 0);
+            slide.setDuration(1000);
+//            slide.setFillAfter(true);
+            bottomSheetLayout.startAnimation(slide);
+            bottomSheetLayout.setVisibility(View.VISIBLE);
+            bottomSheetLayout.bringToFront();
 
+            clearData();
+
+            namaProker.setText(list.getNamaProker());
+            namaPengaju.setText(list.getNamaKaryawan() + " - " + list.getNip());
+            biaya.setText(list.getBiaya());
+            biayaTerpakai.setText(list.getBiayaTerpakai());
+            sisaBiaya.setText(list.getSisaBiaya());
+            biayaDiajukan.setText(list.getBiayaDiajukan());
+            dibayarKepada.setText(list.getDibayarKepada());
+            jabatan.setText(list.getJabatan());
+            noRekening.setText(list.getNoRekening());
+        }
+    }
+
+    @OnClick(R.id.tv_slide_down)
+    void onSlideDownData() {
+        flagView = false;
+//        Toast.makeText(getActivity().getApplicationContext(), "click", Toast.LENGTH_LONG).show();
+        TranslateAnimation slide = new TranslateAnimation(0, 0, 0, 1200);
+        slide.setDuration(1000);
+//        slide.setFillAfter(true);
+        bottomSheetLayout.startAnimation(slide);
+        bottomSheetLayout.setVisibility(View.GONE);
+    }
+
+    private void clearData() {
+        namaProker.setText("");
+        namaPengaju.setText("");
+        biaya.setText("");
+        biayaTerpakai.setText("");
+        sisaBiaya.setText("");
+        biayaDiajukan.setText("");
+        dibayarKepada.setText("");
+        jabatan.setText("");
+        noRekening.setText("");
     }
 }
